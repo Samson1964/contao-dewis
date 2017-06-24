@@ -1,0 +1,21 @@
+<table class="queryinfo">
+	<thead>
+		<tr>
+			<th class="right-line bottom-line">&nbsp;</th>
+			<th class="right-line bottom-line align-center">DeWIS</th>
+			<th class="bottom-line align-center">Cache</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="label right-line bottom-line">Zugriffe</td>
+			<td class="value right-line bottom-line align-center"><?= $GLOBALS['DeWIS-Cache']['dewis-queries'] ?></td>
+			<td class="value bottom-line align-center"><?= $GLOBALS['DeWIS-Cache']['cache-queries'] ?></td>
+		</tr>
+		<tr>
+			<td class="label right-line">Zeit</td>
+			<td class="value right-line align-center"><?= ($GLOBALS['DeWIS-Cache']['dewis-queriestimes']) ? sprintf("%1.3f", $GLOBALS['DeWIS-Cache']['dewis-queriestimes']).' s' : '' ?></td>
+			<td class="value align-center">&nbsp;</td>
+		</tr>
+	</tbody>
+</table> 

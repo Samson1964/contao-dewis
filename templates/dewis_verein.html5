@@ -1,0 +1,225 @@
+<!-- indexer::stop -->
+
+<?php
+	$GLOBALS['TL_CSS'][] = 'system/modules/dewis/assets/css/default.css';
+?>
+
+<div class="<?php echo $this->class; ?> dewis block"<?php echo $this->cssID; ?> style="<?php if ($this->margin): ?><?php echo trim($this->margin); ?><?php endif; ?> <?php if ($this->style): ?><?php echo $this->style; ?><?php endif; ?>">
+
+	<?php if($this->headline): ?>
+		<<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+	<?php endif; ?> 
+
+	<div class="dewislinks noprint">
+		<ul>
+		<?php foreach($this->navigation as $d): ?>
+			<?= $d ?>
+		<?php endforeach; ?>
+		</ul>
+	</div>
+
+	<div class="searchform clr noprint">
+		<form action="<?= ALIAS_VEREIN ?>.html" method="get">
+			<fieldset id="searchform" class="tl_box">
+				<legend>Suche</legend>
+				<div class="long">
+					<h3><label for "ctrl_search">Vereinsname</label></h3>
+					<input id="ctrl_search" type="text" class="tl_input_text" autofocus name="search" size="30" maxlength="30">
+					<p class="tl_help">Erlaubt ist auch ein Namensbestandteil</p>
+				</div>
+			</fieldset>
+			<div class="tl_submit_container">
+				<input type="submit" class="tl_submit" value="Suche starten">
+			</div>
+		</form>
+	</div>
+
+	<?php if($this->fehler): ?>
+		<div class="error">
+			Fehler: <?= $this->fehler ?>
+		</div>
+	<?php endif; ?> 
+
+	<?php if($this->subHeadline): ?>
+		<<?= $this->shl ?>><?= $this->subHeadline ?></<?= $this->shl ?>>
+	<?php endif; ?> 
+
+	<?php if($this->searchresult): ?>
+		<div class="searchresult">
+			<?= $this->searchresult ?>
+		</div>
+	<?php endif; ?> 
+
+	<?php if($this->sichtbar && $this->daten): ?>
+
+		<div class="listenlink"><?= $this->listenlink ?></div>
+
+		<?php
+			$GLOBALS['TL_CSS'][] = 'system/modules/dewis/assets/css/tablesorter.css';
+			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/dewis/assets/js/jquery.tablesorter.min.js';
+		?>
+		<script>
+		(function($) 
+		{
+			$(document).ready(function(){
+
+				// Parser für letzte Auswertung 
+				$.tablesorter.addParser({ 
+					id: 'letzteAuswertung', 
+					is: function(s) { 
+						// return false so this parser is not auto detected 
+						return false; 
+					}, 
+					format: function(s) { 
+						// Wert zum Sortieren 
+						return s.substr(3) + s.substr(0,2);
+					}, 
+					// set type, either numeric or text 
+					type: 'numeric' 
+				}); 
+
+				// Parser für DWZ
+				$.tablesorter.addParser({ 
+					id: 'DWZ', 
+					is: function(s) { 
+						// return false so this parser is not auto detected 
+						return false; 
+					}, 
+					format: function(s) { 
+						// Wert zum Sortieren 
+						switch(s.trim()) {
+							case 'Restp.': return 0; break;
+							case '': return -1; break;
+							default: break;
+						}
+						var dwz = s.split('-');
+						dwz[1] = '000' + dwz[1].trim();
+						var temp = dwz[0].trim() + dwz[1].substr(-3);
+						return temp;
+					}, 
+					// set type, either numeric or text 
+					type: 'numeric' 
+				}); 
+
+				// Parser für FIDE-Titel
+				$.tablesorter.addParser({ 
+					id: 'FIDE-Titel', 
+					is: function(s) { 
+						// return false so this parser is not auto detected 
+						return false; 
+					}, 
+					format: function(s) { 
+						// Wert zum Sortieren 
+						switch(s.trim()) {
+							case 'GM': return 9; break;
+							case 'IM': return 8; break;
+							case 'WGM': return 7; break;
+							case 'FM': return 6; break;
+							case 'WIM': return 5; break;
+							case 'CM': return 4; break;
+							case 'WFM': return 3; break;
+							case 'WCM': return 2; break;
+							default: return 0; break;
+						}
+					}, 
+					// set type, either numeric or text 
+					type: 'numeric' 
+				}); 
+
+				$("#dewisTable").tablesorter({
+					headers: { 
+						<?= $this->tablesorter[0] ?>: { 
+							sorter:'letzteAuswertung' 
+						},
+						<?= $this->tablesorter[1] ?>: { 
+							sorter:'DWZ' 
+						},
+						<?= $this->tablesorter[2] ?>: { 
+							sorter:'FIDE-Titel' 
+						} 
+					} 
+				});
+				
+			});
+		})(jQuery);
+		</script>
+		
+		<table id="dewisTable" class="body tablesorter">
+			<thead>
+				<tr class="row_0">
+					<?php if($this->rangliste): ?><th class="col_0 right-line">Pl.</th><?php endif; ?>
+					<th class="col_1 right-line">Mgl-<br>Nr.</th>
+					<?php if(!PASSIVE_AUSBLENDEN): ?><th class="col_2 right-line">Sta-<br>tus</th><?php endif; ?>
+					<th class="col_3 right-line">Spielername</th>
+					<?php if(!GESCHLECHT_AUSBLENDEN): ?><th class="col_4 right-line">Geschl.</th><?php endif; ?>
+					<th class="col_5 right-line">Letzte<br>Ausw.</th>
+					<th class="col_6 right-line">DWZ</th>
+					<th class="col_7 right-line">Elo</th>
+					<th class="col_8">FIDE-<br>Titel</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $row = 1; ?>
+				<?php if($this->daten): ?>
+					<?php $x = 0; ?>
+					<?php foreach($this->daten as $d): ?>
+						<?php $x++; $class = ($x < count($this->daten)) ? ' bottom-line' : ''; ?>
+						<tr class="row_<?= $row ?>">
+							<?php if($this->rangliste): ?><td class="col_0 align-right right-line<?= $class ?>"><?= $d['Platz'] ?>.</td><?php endif; ?>
+							<td class="col_1 right-line<?= $class ?>"><?= $d['Mglnr'] ?></td>
+							<?php if(!PASSIVE_AUSBLENDEN): ?><td class="col_2 right-line align-center<?= $class ?>"><?= $d['Status'] ?></td><?php endif; ?>
+							<td class="col_3 right-line<?= $class ?>"><?= $d['Spielername'] ?></td>
+							<?php if(!GESCHLECHT_AUSBLENDEN): ?><td class="col_4 right-line"><?= $d['Geschlecht'] ?></td><?php endif; ?>
+							<td class="col_5 right-line<?= $class ?>"><?= $d['KW'] ?></td>
+							<td class="col_6 right-line<?= $class ?>"><?= $d['DWZ'] ?></td>
+							<td class="col_7 right-line<?= $class ?>"><?= $d['Elo'] ?></td>
+							<td class="col_8<?= $class ?>"><?= $d['FIDE-Titel'] ?></td>
+						</tr>
+						<?php $row++; ?>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</tbody>
+		</table>
+
+		<?php if($this->verbaende): ?>
+			<table class="body">
+				<thead>
+					<tr>
+						<th>Verbandszugehörigkeiten</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php $x = 0; ?>
+				<?php foreach($this->verbaende as $d): ?>
+					<?php $x++; $class = ($x < count($this->verbaende)) ? ' bottom-line' : ''; ?>
+					<tr>
+						<td class="<?= $d['typ'] ?><?= $class ?>"><?= $d['name'] ?></td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+
+		<table class="body">
+			<thead>
+				<tr>
+					<th>Zuständiger Wertungsreferent</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><?= $this->referent ?></td>
+				</tr>
+			</tbody>
+		</table>
+
+	<?php endif; ?>
+	
+	<?= $this->infobox ?>
+
+<?php if($this->hinweis): ?>
+	<?= $this->registrierung ?>
+<?php endif; ?> 
+
+</div>
+<!-- indexer::continue -->

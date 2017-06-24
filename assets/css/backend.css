@@ -1,0 +1,25 @@
+.tl_content:nth-child(2) .tl_content_right
+{
+	margin-top         : 20px;
+}
+
+.tl_content .inline
+{
+	display            : inline-block;
+}
+
+.align-right
+{
+	text-align         : right;
+}
+
+.tl_folder_tlist
+{
+	padding            : 2px 5px 3px;
+}
+
+.item
+{
+	padding-left       : 5px;
+	padding-right      : 5px;
+}
