@@ -746,7 +746,7 @@ class DeWIS
 									'tstamp'     => time(),
 									'nachname'   => $m->surname,
 									'vorname'    => $m->firstname,
-									'titel'      => $m->title,
+									'titel'      => ($m->title) ? '' : $m->title,
 									'geschlecht' => strtoupper($m->gender),
 									'geburtstag' => ($m->yearOfBirth > $objPlayer->geburtstag) ? $m->yearOfBirth : $objPlayer->geburtstag,
 									'zpsmgl'     => $m->membership,
