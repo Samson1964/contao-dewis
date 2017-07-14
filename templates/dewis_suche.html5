@@ -1,0 +1,19 @@
+<!-- indexer::stop -->
+
+<?php
+	$GLOBALS['TL_CSS'][] = 'system/modules/dewis/assets/css/default.css';
+?>
+
+<div class="<?php echo $this->class; ?> dewis block"<?php echo $this->cssID; ?> style="<?php if ($this->margin): ?><?php echo trim($this->margin); ?><?php endif; ?> <?php if ($this->style): ?><?php echo $this->style; ?><?php endif; ?>">
+
+	<?php if($this->headline): ?>
+		<<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+	<?php endif; ?> 
+
+	<?php if($this->result_spieler): ?>
+		<?php foreach($this->result_spieler as $item): ?>
+		<?php endforeach; ?>
+	<?php endif; ?> 
+
+</div>
+<!-- indexer::continue -->

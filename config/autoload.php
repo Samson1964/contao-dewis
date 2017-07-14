@@ -41,14 +41,15 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'dewis_sub_spielersuche'	=> 'system/modules/dewis/templates',
-	'dewis_spieler'				=> 'system/modules/dewis/templates',
-	'dewis_sub_vereinsuche'		=> 'system/modules/dewis/templates',
-	'dewis_verein'				=> 'system/modules/dewis/templates',
-	'dewis_sub_verbandsuche'	=> 'system/modules/dewis/templates',
-	'dewis_verband'				=> 'system/modules/dewis/templates',
-	'dewis_sub_turniersuche'	=> 'system/modules/dewis/templates',
-	'dewis_turnier'				=> 'system/modules/dewis/templates',
-	'be_dewis'					=> 'system/modules/dewis/templates',
-	'queries'					=> 'system/modules/dewis/templates',
+	'dewis_sub_spielersuche'        => 'system/modules/dewis/templates',
+	'dewis_spieler'                 => 'system/modules/dewis/templates',
+	'dewis_sub_vereinsuche'         => 'system/modules/dewis/templates',
+	'dewis_verein'                  => 'system/modules/dewis/templates',
+	'dewis_sub_verbandsuche'        => 'system/modules/dewis/templates',
+	'dewis_verband'                 => 'system/modules/dewis/templates',
+	'dewis_sub_turniersuche'        => 'system/modules/dewis/templates',
+	'dewis_turnier'                 => 'system/modules/dewis/templates',
+	'dewis_suche'                   => 'system/modules/dewis/templates',
+	'be_dewis'                      => 'system/modules/dewis/templates',
+	'queries'                       => 'system/modules/dewis/templates',
 ));
