@@ -77,10 +77,11 @@ $GLOBALS['BE_MOD']['dewis'] = array
 
 $GLOBALS['FE_MOD']['dewis'] = array
 (
-	'dewis_spieler'			=> 'Samson\DeWIS\Spieler',
-	'dewis_verein'			=> 'Samson\DeWIS\Verein',
-	'dewis_verband'			=> 'Samson\DeWIS\Verband',
-	'dewis_turnier'			=> 'Samson\DeWIS\Turnier',
+	'dewis_spieler'         => 'Samson\DeWIS\Spieler',
+	'dewis_verein'          => 'Samson\DeWIS\Verein',
+	'dewis_verband'         => 'Samson\DeWIS\Verband',
+	'dewis_turnier'         => 'Samson\DeWIS\Turnier',
+	'dewis_suche'           => 'Samson\DeWIS\Suche',
 );
 
 // http://de.contaowiki.org/Strukturierte_URLs

@@ -25,13 +25,14 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Classes
-	'Samson\DeWIS\DeWIS'				=> 'system/modules/dewis/helper/DeWIS.php',
-	'Samson\DeWIS\Cache'				=> 'system/modules/dewis/helper/Cache.php',
-	'Samson\DeWIS\Helper'				=> 'system/modules/dewis/helper/Helper.php',
-	'Samson\DeWIS\Spieler'				=> 'system/modules/dewis/classes/Spieler.php',
-	'Samson\DeWIS\Verein'				=> 'system/modules/dewis/classes/Verein.php',
-	'Samson\DeWIS\Verband'				=> 'system/modules/dewis/classes/Verband.php',
-	'Samson\DeWIS\Turnier'				=> 'system/modules/dewis/classes/Turnier.php',
+	'Samson\DeWIS\DeWIS'            => 'system/modules/dewis/helper/DeWIS.php',
+	'Samson\DeWIS\Cache'            => 'system/modules/dewis/helper/Cache.php',
+	'Samson\DeWIS\Helper'           => 'system/modules/dewis/helper/Helper.php',
+	'Samson\DeWIS\Spieler'          => 'system/modules/dewis/classes/Spieler.php',
+	'Samson\DeWIS\Verein'           => 'system/modules/dewis/classes/Verein.php',
+	'Samson\DeWIS\Verband'          => 'system/modules/dewis/classes/Verband.php',
+	'Samson\DeWIS\Turnier'          => 'system/modules/dewis/classes/Turnier.php',
+	'Samson\DeWIS\Suche'            => 'system/modules/dewis/classes/Suche.php'
 ));
 
 
