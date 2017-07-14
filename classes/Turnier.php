@@ -202,7 +202,7 @@ class Turnier extends \Module
 			}
 			
 			$orderby = 'Turniercode'; // Sortierschlüssel
-			array_multisort($sortArray[$orderby],SORT_DESC,$daten); 
+			if (is_array($sortArray[$orderby])) array_multisort($sortArray[$orderby],SORT_DESC,$daten); 
 
 			/*********************************************************
 			 * Seitentitel ändern
@@ -304,27 +304,30 @@ class Turnier extends \Module
 			 * Ergebnisse in einem Array speichern
 			*/
 
-			foreach($result_tresult->rounds as $r)
+			if ($result_tresult->rounds)
 			{
-				foreach ($r->games as $g) 
+				foreach($result_tresult->rounds as $r)
 				{
-					// Es kann mehrere Ergebnisse je Runde geben, deshalb das Subarray!
-					if(!$playerArr[$g->idWhite]['Spielername']) $playerArr[$g->idWhite]['Spielername'] = $g->white;
-					$resultArr[$g->idWhite][$r->no][] = array
-					(
-						'Gegner'   => $g->idBlack,
-						'Ergebnis' => mb_substr($g->result,0,1),
-						'Farbe'    => 'white',
-						'Nummer'   => 0,
-					); 
-					if(!$playerArr[$g->idBlack]['Spielername']) $playerArr[$g->idBlack]['Spielername'] = $g->black;
-					$resultArr[$g->idBlack][$r->no][] = array
-					(
-						'Gegner'   => $g->idWhite,
-						'Ergebnis' => mb_substr($g->result,2,1),
-						'Farbe'    => 'black',
-						'Nummer'   => 0,
-					); 
+					foreach ($r->games as $g) 
+					{
+						// Es kann mehrere Ergebnisse je Runde geben, deshalb das Subarray!
+						if(!$playerArr[$g->idWhite]['Spielername']) $playerArr[$g->idWhite]['Spielername'] = $g->white;
+						$resultArr[$g->idWhite][$r->no][] = array
+						(
+							'Gegner'   => $g->idBlack,
+							'Ergebnis' => mb_substr($g->result,0,1),
+							'Farbe'    => 'white',
+							'Nummer'   => 0,
+						); 
+						if(!$playerArr[$g->idBlack]['Spielername']) $playerArr[$g->idBlack]['Spielername'] = $g->black;
+						$resultArr[$g->idBlack][$r->no][] = array
+						(
+							'Gegner'   => $g->idWhite,
+							'Ergebnis' => mb_substr($g->result,2,1),
+							'Farbe'    => 'black',
+							'Nummer'   => 0,
+						); 
+					}
 				}
 			}
 
@@ -455,49 +458,52 @@ class Turnier extends \Module
 				// Ergebnisarray neu zusammensetzen
 				$ergArr = array();
 				$sumPunkte = 0; $sumWe = 0;
-				foreach($playerArr[$id]['Ergebnisse'] as $runde => $dataArr)
+				if ($playerArr[$id]['Ergebnisse'])
 				{
-					foreach($dataArr as $erg)
+					foreach($playerArr[$id]['Ergebnisse'] as $runde => $dataArr)
 					{
-						// Punkte addieren
-						switch($erg['Ergebnis'])
+						foreach($dataArr as $erg)
 						{
-							case '1':
-								$We = \Samson\DeWIS\DeWIS::Gewinnerwartung($playerArr[$id]['DWZ'], $playerArr[$erg['Gegner']]['DWZ']);
-								if($We)
-								{
-									$sumPunkte += 1;
-									$sumWe += $We;
-								}
-								break;
-							case '½':
-								$We = \Samson\DeWIS\DeWIS::Gewinnerwartung($playerArr[$id]['DWZ'], $playerArr[$erg['Gegner']]['DWZ']);
-								if($We)
-								{
-									$sumPunkte += .5;
-									$sumWe += $We;
-								}
-								break;
-							case '0':
-								$We = \Samson\DeWIS\DeWIS::Gewinnerwartung($playerArr[$id]['DWZ'], $playerArr[$erg['Gegner']]['DWZ']);
-								if($We)
-								{
-									$sumWe += $We;
-								}
-								break;
-							default:
-								$We = false;
+							// Punkte addieren
+							switch($erg['Ergebnis'])
+							{
+								case '1':
+									$We = \Samson\DeWIS\DeWIS::Gewinnerwartung($playerArr[$id]['DWZ'], $playerArr[$erg['Gegner']]['DWZ']);
+									if($We)
+									{
+										$sumPunkte += 1;
+										$sumWe += $We;
+									}
+									break;
+								case '½':
+									$We = \Samson\DeWIS\DeWIS::Gewinnerwartung($playerArr[$id]['DWZ'], $playerArr[$erg['Gegner']]['DWZ']);
+									if($We)
+									{
+										$sumPunkte += .5;
+										$sumWe += $We;
+									}
+									break;
+								case '0':
+									$We = \Samson\DeWIS\DeWIS::Gewinnerwartung($playerArr[$id]['DWZ'], $playerArr[$erg['Gegner']]['DWZ']);
+									if($We)
+									{
+										$sumWe += $We;
+									}
+									break;
+								default:
+									$We = false;
+							}
+							$ergArr[] = array
+							(
+								'Runde'		=> $runde,
+								'Gegner'	=> $playerArr[$erg['Gegner']]['Spielername'],
+								'Scoresheet'=> $playerArr[$erg['Gegner']]['Scoresheet'],
+								'DWZ'		=> $playerArr[$erg['Gegner']]['DWZ'],
+								'Farbe'	    => $erg['Farbe'],
+								'Ergebnis'	=> $erg['Ergebnis'],
+								'We'	    => $We,
+							);
 						}
-						$ergArr[] = array
-						(
-							'Runde'		=> $runde,
-							'Gegner'	=> $playerArr[$erg['Gegner']]['Spielername'],
-							'Scoresheet'=> $playerArr[$erg['Gegner']]['Scoresheet'],
-							'DWZ'		=> $playerArr[$erg['Gegner']]['DWZ'],
-							'Farbe'	    => $erg['Farbe'],
-							'Ergebnis'	=> $erg['Ergebnis'],
-							'We'	    => $We,
-						);
 					}
 				}
 				// Summe hinzufügen

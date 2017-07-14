@@ -664,7 +664,7 @@ class DeWIS
 				$leistung = $dwz - 100;
 			return $leistung;
 		}
-		if(($partien != 5 OR $partien != 6) && ($ppp == 1 OR $ppp == 0)) 
+		if(($partien != 5 AND $partien != 6) && ($ppp == 1 OR $ppp == 0)) 
 		{
 			$diff = 677 / (5 - $partien);
 			$leistung = round(($dwz + ($dwz - ($diff + $niveau)) / (6 - $partien)), 0);
@@ -673,7 +673,8 @@ class DeWIS
 		{
 			$leistung = $niveau;
 		}
-		else {
+		elseif ($punkte != 0)
+		{
 			$leistung = round(-400 * log10($partien / $punkte - 1) + $niveau, 0);
 		}
 		
@@ -746,7 +747,7 @@ class DeWIS
 									'tstamp'     => time(),
 									'nachname'   => $m->surname,
 									'vorname'    => $m->firstname,
-									'titel'      => ($m->title) ? '' : $m->title,
+									'titel'      => ($m->title) ? $m->title : '',
 									'geschlecht' => strtoupper($m->gender),
 									'geburtstag' => ($m->yearOfBirth > $objPlayer->geburtstag) ? $m->yearOfBirth : $objPlayer->geburtstag,
 									'zpsmgl'     => $m->membership,
@@ -776,7 +777,7 @@ class DeWIS
 								'dewisID'    => $m->pid,
 								'nachname'   => $m->surname,
 								'vorname'    => $m->firstname,
-								'titel'      => $m->title,
+								'titel'      => ($m->title) ? $m->title : '',
 								'geschlecht' => strtoupper($m->gender),
 								'geburtstag' => $m->yearOfBirth,
 								'zpsmgl'     => $m->membership,
@@ -818,7 +819,7 @@ class DeWIS
 									'tstamp'     => time(),
 									'nachname'   => $m->surname,
 									'vorname'    => $m->firstname,
-									'titel'      => $m->title,
+									'titel'      => ($m->title) ? $m->title : '',
 									'geschlecht' => strtoupper($m->gender),
 									'geburtstag' => ($m->yearOfBirth > $objPlayer->geburtstag) ? $m->yearOfBirth : $objPlayer->geburtstag,
 									'zpsmgl'     => $m->membership,
@@ -847,7 +848,7 @@ class DeWIS
 								'dewisID'    => $m->pid,
 								'nachname'   => $m->surname,
 								'vorname'    => $m->firstname,
-								'titel'      => $m->title,
+								'titel'      => ($m->title) ? $m->title : '',
 								'geschlecht' => strtoupper($m->gender),
 								'geburtstag' => $m->yearOfBirth,
 								'zpsmgl'     => $m->membership,
