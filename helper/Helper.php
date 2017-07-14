@@ -246,4 +246,66 @@ class Helper extends \Frontend
 		return $newArr;
 	}
 
+
+	/**
+	 * Überprüft den Suchbegriff für eine Spielersuche
+	 * @param $search      Suchbegriff
+	 * @return array       Array mit Typ und Vorname+Nachname und Vorname+Nachname gedreht
+	 */
+	public function checkSearchstringPlayer($search)
+	{
+		if (is_numeric($search)) $typ = 'pkz'; // Eine PKZ wurde übergeben
+		elseif (strlen($search) == 10 && substr($search,5,1) == '-') $typ = 'zps'; // Eine ZPS wurde übergeben
+		else
+		{
+			// Ein Name wurde übergeben, zuerst akademische Titel entfernen
+			$search = str_replace(',Prof. Dr.','',$search);
+			$search = str_replace(',Prof.Dr.','',$search);
+			$search = str_replace(',Prof.','',$search);
+			$search = str_replace(',Dr.','',$search);
+			$search = str_replace('Prof. Dr. ','',$search);
+			$search = str_replace('Prof.Dr. ','',$search);
+			$search = str_replace('Prof. ','',$search);
+			$search = str_replace('Dr. ','',$search);
+			
+			// Name am Komma trennen
+			$typ = 'name';
+			$strKomma = explode(',', $search);
+			if ($strKomma[1])
+			{
+				// Suchbegriff entspricht Nachname, Vorname
+				$nachname = trim($strKomma[0]);
+				$vorname = trim($strKomma[1]);
+			}
+			else
+			{
+				$nachname = $search;
+				$vorname = '';
+				// Auf Leerzeichen als Trennzeichen überprüfen
+				$strLeer = explode(' ', $search);
+				if ($strLeer[1])
+				{
+					// Suchbegriff entspricht Vorname Nachname (wahrscheinlich)
+					$nachname2 = trim($strLeer[1]);
+					$vorname2 = trim($strLeer[0]);
+				}
+				else
+				{
+					// Suchbegriff entspricht Nachname (wahrscheinlich)
+					$nachname2 = trim($search);
+					$vorname2 = '';
+				}
+			}
+		}
+
+		return array
+		(
+			'typ'       => $typ,
+			'vorname'   => $vorname,
+			'vorname2'  => $vorname2,
+			'nachname'  => $nachname,
+			'nachname2' => $nachname2,
+		);
+	}
+
 }

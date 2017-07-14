@@ -99,87 +99,44 @@ class Spieler extends \Module
 
 		if($search)
 		{
-			// Suchbegriff analysieren
-			if (is_numeric($search)) $typ = 'pkz'; // Eine PKZ wurde übergeben
-			elseif (strlen($search) == 10 && substr($search,5,1) == '-') $typ = 'zps'; // Eine ZPS wurde übergeben
-			else
-			{
-				// Ein Name wurde übergeben, zuerst akademische Titel entfernen
-				$search = str_replace(',Prof. Dr.','',$search);
-				$search = str_replace(',Prof.Dr.','',$search);
-				$search = str_replace(',Prof.','',$search);
-				$search = str_replace(',Dr.','',$search);
-				$search = str_replace('Prof. Dr. ','',$search);
-				$search = str_replace('Prof.Dr. ','',$search);
-				$search = str_replace('Prof. ','',$search);
-				$search = str_replace('Dr. ','',$search);
-				
-				// Name am Komma trennen
-				$typ = 'name';
-				$strKomma = explode(',', $search);
-				if ($strKomma[1])
-				{
-					// Suchbegriff entspricht Nachname, Vorname
-					$nachname = trim($strKomma[0]);
-					$vorname = trim($strKomma[1]);
-				}
-				else
-				{
-					$nachname = $search;
-					$vorname = '';
-					// Auf Leerzeichen als Trennzeichen überprüfen
-					$strLeer = explode(' ', $search);
-					if ($strLeer[1])
-					{
-						// Suchbegriff entspricht Vorname Nachname (wahrscheinlich)
-						$nachname2 = trim($strLeer[1]);
-						$vorname2 = trim($strLeer[0]);
-					}
-					else
-					{
-						// Suchbegriff entspricht Nachname (wahrscheinlich)
-						$nachname2 = trim($search);
-						$vorname2 = '';
-					}
-				}
-			}
+			$check_search = \Samson\DeWIS\Helper::checkSearchstringPlayer($search); // Suchbegriff analysieren
 
 			$this->Template->subHeadline = 'Suche nach '.$search; // Unterüberschrift setzen
 
 			// Abfrageparameter einstellen
-			if ($typ == 'name')
+			if ($check_search['typ'] == 'name')
 			{
 				// Spielersuche
 				$param = array
 				(
 					'funktion' => 'Spielerliste',
 					'cachekey' => $search,
-					'vorname'  => $vorname,
-					'nachname' => $nachname,
+					'vorname'  => $check_search['vorname'],
+					'nachname' => $check_search['nachname'],
 					'limit'    => 500
 				);
 			}
-			if ($typ == 'pkz')
+			if ($check_search['typ'] == 'pkz')
 			{
 				// Spielersuche
 				$param = array
 				(
 					'funktion' => 'Spielerliste',
 					'cachekey' => $search,
-					'vorname'  => $vorname,
-					'nachname' => $nachname,
+					'vorname'  => $check_search['vorname'],
+					'nachname' => $check_search['nachname'],
 					'limit'    => 500
 				);
 			}
-			if ($typ == 'zps')
+			if ($check_search['typ'] == 'zps')
 			{
 				// Spielersuche
 				$param = array
 				(
 					'funktion' => 'Spielerliste',
 					'cachekey' => $search,
-					'vorname'  => $vorname,
-					'nachname' => $nachname,
+					'vorname'  => $check_search['vorname'],
+					'nachname' => $check_search['nachname'],
 					'limit'    => 500
 				);
 			}
@@ -220,8 +177,8 @@ class Spieler extends \Module
 				(
 					'funktion' => 'Spielerliste',
 					'cachekey' => $search.'_leer',
-					'vorname'  => $vorname2,
-					'nachname' => $nachname2,
+					'vorname'  => $check_search['vorname2'],
+					'nachname' => $check_search['nachname2'],
 					'limit'    => 500
 				);
 				$resultArr = \Samson\DeWIS\DeWIS::autoQuery($param); // Abfrage ausführen
