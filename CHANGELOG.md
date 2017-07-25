@@ -1,5 +1,8 @@
 # Abfrage der DeWIS-API
 
+## Version 1.2.0 (2017-07-25)
+
+Add: Funktion zum Löschen des Caches im Backend
 Change: Cache-Einstellungen nach Systemeinstellungen Contao verlagert
 
 ## Version 1.1.0 (2017-07-14)

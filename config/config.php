@@ -95,6 +95,14 @@ if (TL_MODE == 'BE')
 }
 
 /**
+ * Purge jobs / Reinigungsarbeiten
+ */
+$GLOBALS['TL_PURGE']['custom']['dewis'] = array
+(
+	'callback' => array('DeWIS\DeWIS', 'purgeCache')
+);
+
+/**
  * -------------------------------------------------------------------------
  * Voreinstellungen Contao-BE System -> Einstellungen
  * -------------------------------------------------------------------------

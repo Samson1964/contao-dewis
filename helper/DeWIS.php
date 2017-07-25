@@ -530,6 +530,72 @@ class DeWIS
 		return $arrFragments;
 	}
 
+
+	/**
+	 * PurgeJob-Funktion: 
+	 * Berechnet die Cache-Größe
+	 */
+	public function calcCache()
+	{
+		$speicher = array
+		(
+			'Verbaende',
+			'Wertungsreferent',
+			'Spielerliste',
+			'Karteikarte',
+			'KarteikarteZPS',
+			'Vereinsliste',
+			'Verbandsliste',
+			'Turnierliste',
+			'Turnierauswertung',
+			'Turnierergebnisse'
+		);
+
+		$string = '';
+		foreach($speicher as $item)
+		{
+			$cache = new \Samson\DeWIS\Cache(array('name' => $item, 'path' => CACHE_DIR, 'extension' => '.cache'));
+			$anzahl = count($cache->retrieveAll()); // Anzahl der Cache-Einträge
+			$text = ($anzahl == 1) ? 'Eintrag' : 'Einträge';
+			$string .= '<br><span style="font-weight:normal"><span style="color:black">'.$item.':</span> '.$anzahl.' '.$text.'</span>';
+		}
+		
+		//log_message(count($daten),'dewis-cache.log');
+		return $string;
+	}
+
+	/**
+	 * PurgeJob-Funktion: 
+	 * Stellt im BE unter Systemwartung die Cache-Löschung zur Verfügung
+	 */
+	public function purgeCache()
+	{
+		$speicher = array
+		(
+			'Verbaende',
+			'Wertungsreferent',
+			'Spielerliste',
+			'Karteikarte',
+			'KarteikarteZPS',
+			'Vereinsliste',
+			'Verbandsliste',
+			'Turnierliste',
+			'Turnierauswertung',
+			'Turnierergebnisse'
+		);
+
+		foreach($speicher as $item)
+		{
+			$cache = new \Samson\DeWIS\Cache(array('name' => $item, 'path' => CACHE_DIR, 'extension' => '.cache'));
+			$cache->eraseAll(); // Cache löschen
+		}
+
+		log_message('Cache deleted','dewis-cache.log');
+		return;
+	}
+
+
+
 	/**
 	 * Hilfsfunktion: 
 	 * Formatierte Ausgabe einer Variable
