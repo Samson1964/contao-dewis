@@ -551,7 +551,7 @@ class DeWIS
 			'Turnierergebnisse'
 		);
 
-		$string = '';
+		$string = '</label>';
 		foreach($speicher as $item)
 		{
 			$cache = new \Samson\DeWIS\Cache(array('name' => $item, 'path' => CACHE_DIR, 'extension' => '.cache'));
@@ -559,6 +559,7 @@ class DeWIS
 			$text = ($anzahl == 1) ? 'Eintrag' : 'Einträge';
 			$string .= '<br><span style="font-weight:normal"><span style="color:black">'.$item.':</span> '.$anzahl.' '.$text.'</span>';
 		}
+		$string .= '<label>';
 		
 		//log_message(count($daten),'dewis-cache.log');
 		return $string;
