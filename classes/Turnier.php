@@ -24,9 +24,6 @@ class Turnier extends \Module
 	protected $subTemplate = 'dewis_sub_turniersuche';
 	protected $infoTemplate = 'queries';
 	
-	var $cache;
-	var $cacheDir;
-	
 	var $startzeit; // Startzeit des Skriptes
 	var $dewis;
 	

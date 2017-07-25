@@ -31,9 +31,6 @@ class Spieler extends \Module
 	protected $subTemplate = 'dewis_sub_spielersuche';
 	protected $infoTemplate = 'queries';
 	
-	var $cache;
-	var $cacheDir;
-	
 	var $startzeit; // Startzeit des Skriptes
 	var $dewis;
 	

@@ -1,5 +1,7 @@
 # Abfrage der DeWIS-API
 
+Change: Cache-Einstellungen nach Systemeinstellungen Contao verlagert
+
 ## Version 1.1.0 (2017-07-14)
 
 Add: FE-Modul zur Einbindung der Spielersuche in die Websuche

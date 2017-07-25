@@ -24,8 +24,6 @@ class Verband extends \Module
 	protected $subTemplate = 'dewis_sub_verbandsuche';
 	protected $infoTemplate = 'queries';
 	
-	var $cache;
-	
 	var $startzeit; // Startzeit des Skriptes
 	var $dewis;
 	

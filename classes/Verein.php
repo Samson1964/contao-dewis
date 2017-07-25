@@ -24,9 +24,6 @@ class Verein extends \Module
 	protected $subTemplate = 'dewis_sub_vereinsuche';
 	protected $infoTemplate = 'queries';
 	
-	var $cache;
-	var $cacheDir;
-	
 	var $startzeit; // Startzeit des Skriptes
 	var $dewis;
 	
@@ -111,7 +108,7 @@ class Verein extends \Module
 			*/
 
 			$result_vn = array();
-			if(CACHE_AKTIV)
+			if($GLOBALS['TL_CONFIG']['dewis_cache'])
 			{
 				$cache_vn = new \Samson\DeWIS\Cache(array('name' => 'vereinssuche', 'path' => CACHE_DIR, 'extension' => '.cache'));
 				$cache_vn->eraseExpired(); // Cache aufräumen, abgelaufene Schlüssel löschen
@@ -129,7 +126,7 @@ class Verein extends \Module
 			*/
 
 			$result_vb = array();
-			if(CACHE_AKTIV)
+			if($GLOBALS['TL_CONFIG']['dewis_cache'])
 			{
 				$cache_vb = new \Samson\DeWIS\Cache(array('name' => 'verbandssuche', 'path' => CACHE_DIR, 'extension' => '.cache'));
 				$cache_vb->eraseExpired(); // Cache aufräumen, abgelaufene Schlüssel löschen
@@ -162,7 +159,7 @@ class Verein extends \Module
 					}
 				}
 				// im Cache speichern
-				if(CACHE_AKTIV) $cache_vb->store($search, $result_vb, CACHE_TIME);
+				if($GLOBALS['TL_CONFIG']['dewis_cache']) $cache_vb->store($search, $result_vb, $GLOBALS['TL_CONFIG']['dewis_cache_verband'] * 3600);
 			}
 
 
@@ -186,7 +183,7 @@ class Verein extends \Module
 					}
 				}
 				// im Cache speichern
-				if(CACHE_AKTIV) $cache_vn->store($search, $result_vn, CACHE_TIME);
+				if($GLOBALS['TL_CONFIG']['dewis_cache']) $cache_vn->store($search, $result_vn, $GLOBALS['TL_CONFIG']['dewis_cache_verband'] * 3600);
 			}
 
 

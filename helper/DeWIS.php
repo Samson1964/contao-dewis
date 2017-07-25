@@ -55,7 +55,7 @@ class DeWIS
 	public function autoQuery($params)
 	{
 
-		if(CACHE_AKTIV)
+		if($GLOBALS['TL_CONFIG']['dewis_cache'])
 		{
 			// Cache initialisieren
 			$cache = new \Samson\DeWIS\Cache(array('name' => $params['funktion'], 'path' => CACHE_DIR, 'extension' => '.cache'));
@@ -69,13 +69,13 @@ class DeWIS
 			switch($params['funktion'])
 			{
 				case 'Verbaende':
-					$cachetime = CACHE_TIME * CACHE_TIME_FAKTOR_VERBAND;
+					$cachetime = 3600 * $GLOBALS['TL_CONFIG']['dewis_cache_verband'];
 					break;
 				case 'Wertungsreferent':
-					$cachetime = CACHE_TIME * CACHE_TIME_FAKTOR_REFERENT;
+					$cachetime = 3600 * $GLOBALS['TL_CONFIG']['dewis_cache_referent'];
 					break;
 				default:
-					$cachetime = CACHE_TIME;
+					$cachetime = 3600;
 			}
 		}
 
@@ -89,7 +89,7 @@ class DeWIS
 			$querytime = sprintf("%1.3f", $tende);
 			$cachemode = false;
 			// im Cache speichern
-			if(CACHE_AKTIV) $cache->store($params['cachekey'], $result, $cachetime);
+			if($GLOBALS['TL_CONFIG']['dewis_cache']) $cache->store($params['cachekey'], $result, $cachetime);
 			$GLOBALS['DeWIS-Cache']['dewis-queries']++;
 			$GLOBALS['DeWIS-Cache']['dewis-queriestimes'] += $querytime;
 			//echo $params['funktion'];
