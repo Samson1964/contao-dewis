@@ -264,7 +264,7 @@ class DeWIS
 						$this->error = "Ungültiges Turnier";
 						break;
 					case "tournament level not valid":
-						$this->error = "tournament level not valid";
+						$this->error = "Ungültige ZPS für Verband";
 						break;
 					case "surname too short":
 						$this->error = "Nachname zu kurz";
@@ -415,7 +415,6 @@ class DeWIS
 		// Verband K hinzufügen und DSB modifizieren
 		$verbaende['K00'] = array('zps' => 'K00', 'name' => 'Ausländer', 'order' => 'auslaender', 'parent' => '000', 'childs' => array());
 		$verbaende['000']['childs'] = array_merge($verbaende['000']["childs"],array('K00'));
-		echo "<pre>"; print_r($verbaende); echo "</pre>"; exit();
 
 		return array($verbaende, $vereine);
 	}

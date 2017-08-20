@@ -106,6 +106,9 @@ class Turnier extends \Module
 			 * und die Jahre einzeln abgefragt.
 			*/
 
+			// Übergebenen ZPS-Parameter korrigieren: dreistellig und Großschreibung
+			$zps = substr(strtoupper(\Input::get('zps')).'000',0,3);
+
 			// ZPS-Cookie setzen
 			setcookie('dewis-verband-zps', rtrim(\Input::get('zps'),0), time()+8640000, '/');
 			
@@ -155,10 +158,10 @@ class Turnier extends \Module
 					$param = array
 					(
 						'funktion'  => 'Turnierliste',
-						'cachekey'  => strtolower(\Input::get('keyword')).'-'.\Input::get('zps').'-'.$periode['von'].'-'.$periode['bis'],
+						'cachekey'  => strtolower(\Input::get('keyword')).'-'.$zps.'-'.$periode['von'].'-'.$periode['bis'],
 						'von'       => $periode['von'],
 						'bis'       => $periode['bis'],
-						'zps'       => \Input::get('zps'),
+						'zps'       => $zps,
 						'suche'     => strtolower(\Input::get('keyword')),
 					);
 
@@ -218,7 +221,7 @@ class Turnier extends \Module
 			$this->Subtemplate->daten = $daten;
 			$this->Subtemplate->anzahl = count($daten);
 			$this->Subtemplate->search_keyword = $keyword;
-			$this->Subtemplate->search_verband = \Input::get('zps');
+			$this->Subtemplate->search_verband = $zps;
 			$this->Subtemplate->search_from = $from_month.'/'.$from_year;
 			$this->Subtemplate->search_to = $to_month.'/'.$to_year;
 			$this->Template->fehler = \Samson\DeWIS\DeWIS::ZeigeFehler();
