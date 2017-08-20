@@ -76,7 +76,7 @@ class Verband extends \Module
 
 		// ZPS-Variable holen
 		$zps = \Input::get('zps');
-		if(!$zps) $zps = '00000';
+		if(!$zps) $zps = '000';
 		// Listenvariablen holen und anpassen
 		$toplist = \Input::get('toplist');
 		if($toplist && $toplist > 950) $toplist = 950;
