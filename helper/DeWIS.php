@@ -366,7 +366,7 @@ class DeWIS
 		return false;
 	}
 
-	public function Verbandsliste($zps) 
+	public function Verbandsliste($zps)
 	{
 
 		// Abfrageparameter einstellen
@@ -378,53 +378,68 @@ class DeWIS
 		);
 
 		$resultArr = \Samson\DeWIS\DeWIS::autoQuery($param); // Abfrage ausführen
-		
+
 		// Verbände und Vereine ordnen
 		list($verbaende, $vereine) = \Samson\DeWIS\DeWIS::org($resultArr['result']);
 		
 		return array('verbaende' => $verbaende, 'vereine' => $vereine);
 	}
 
-	protected function org($result) {
-		
+	protected function org($result)
+	{
+
 		\Samson\DeWIS\DeWIS::sub_org($result, $liste);
-	
+
 		$verbaende = array();
 		$vereine = array();
 		reset($liste);
-		foreach ($liste as $l) {
-			if ($l['childs'] or $l['parent'] == '00000') {
+
+		foreach ($liste as $l)
+		{
+			if ($l['childs'] or $l['parent'] == '000')
+			{
 				$l['childs'] = array();
 				$verbaende['' . $l['zps']] = $l;
-				if ($l['ZPS'] != '00000')
+				if ($l['ZPS'] != '000')
+				{
 					$verbaende['' . $l['parent']]['childs'][] = $l['zps'];
+				}
 			}
-			else {
+			else
+			{
 				unset($l['childs']);
 				$vereine['' . $l['zps']] = $l;
 			}
 		}
 
 		// Verband K hinzufügen und DSB modifizieren
-		$verbaende['K0000'] = array('zps' => 'K0000', 'name' => 'Ausländer', 'order' => 'auslaender', 'parent' => '00000', 'childs' => array());
-		$verbaende['00000']['childs'] = array_merge($verbaende['00000']["childs"],array('00000'));
+		$verbaende['K00'] = array('zps' => 'K00', 'name' => 'Ausländer', 'order' => 'auslaender', 'parent' => '000', 'childs' => array());
+		$verbaende['000']['childs'] = array_merge($verbaende['000']["childs"],array('K00'));
+		echo "<pre>"; print_r($verbaende); echo "</pre>"; exit();
 
 		return array($verbaende, $vereine);
 	}
 
-	protected function sub_org($a, &$liste) {
-		$c = (is_array($a->children) && count($a->children) > 0) ? 1 : 0;
-		$p = (isset($a->p) && isset($liste[$a->p]['zps'])) ? $liste[$a->p]['zps'] : $a->vkz;
+	protected function sub_org($a, &$liste)
+	{
+		$c = (is_array($a->children) && count($a->children) > 0) ? true : false; // Kindelemente (LV, Bezirke, Vereine)? true/false
+		$p = (isset($a->p) && isset($liste[$a->p]['zps'])) ? $liste[$a->p]['zps'] : $a->vkz; // Elternelement speichern
 		$n = $a->club;
-		$liste[$a->id] = array(
+		$liste[$a->id] = array
+		(
 			'zps'           => $a->vkz, # sprintf("%-05s", $a->vkz),
 			'name'          => str_replace("'", "\'", $n),
 			'order'         => str_replace("'", "\'", \StringUtil::generateAlias($n)),
 			'parent'        => $p,
 			'childs'        => $c
 		);
-		if ($c) {
-			foreach ($a->children as $b) {
+
+		// Gibt es auf der aktuellen Ebene Kindelemente?
+		if ($c)
+		{
+			// Kindelemente der Reihe nach rekursiv abarbeiten
+			foreach ($a->children as $b)
+			{
 				\Samson\DeWIS\DeWIS::sub_org($b, $liste);
 			}
 		}
