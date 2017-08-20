@@ -1,5 +1,7 @@
 # Abfrage der DeWIS-API
 
+Fix: Bei Verbandslistenformularen wurde keine Verbandsauswahl mehr angezeigt. Verbandscode von 00000 auf 000 geändert.
+
 ## Version 1.2.1 (2017-08-20)
 
 Fix: Verbandsanzeige in Turniersuche repariert
