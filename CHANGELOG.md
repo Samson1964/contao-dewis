@@ -1,5 +1,10 @@
 # Abfrage der DeWIS-API
 
+## Version 1.2.1 (2017-08-20)
+
+Fix: Verbandsanzeige in Turniersuche repariert
+Fix: In Turniersuche wird der zps-Parameter jetzt automatisch dreistellig gemacht und großgeschrieben
+
 ## Version 1.2.0 (2017-07-25)
 
 Add: Funktion zum Löschen des Caches im Backend
