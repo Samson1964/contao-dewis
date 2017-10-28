@@ -12,13 +12,16 @@ class DeWIS
 	protected static $instance = null;
 
 	var $Fragmente;
-
+	static $answer;
+	static $answertime;
+	static $error;
+	
 	/**
 	 * Klasse initialisieren
 	 */
 	public function __construct()
 	{
-		$this->answertime = false; // Antwortzeit des Servers
+		self::$answertime = false; // Antwortzeit des Servers
 		$this->Fragmente = '';
 	}
 
@@ -143,31 +146,31 @@ class DeWIS
 					// nachname = Nachname des Spielers
 					// limit = Anzahl der Ergebnisse
 					$tstart = microtime(true);
-					$this->answer = $client->searchByName($parameter["nachname"],$parameter["vorname"],0,$parameter["limit"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->searchByName($parameter["nachname"],$parameter["vorname"],0,$parameter["limit"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Karteikarte": // Karteikarte nach ID
 					// id = ID des Spielers
 					$tstart = microtime(true);
-					$this->answer = $client->tournamentCardForId($parameter["id"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->tournamentCardForId($parameter["id"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "KarteikarteZPS": // Karteikarte nach ZPS
 					// zps = Mitgliedsnummer des Spielers
 					$tstart = microtime(true);
-					$this->answer = $client->tournamentCardForZps($parameter["zps"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->tournamentCardForZps($parameter["zps"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Wertungsreferent": // Adresse zur ID eines Wertungsreferenten
 					$tstart = microtime(true);
-					$this->answer = $client->ratingOfficer($parameter["id"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->ratingOfficer($parameter["id"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Vereinsliste": // Spielerliste eines Vereins
 					// zps = fünfstellig
 					$tstart = microtime(true);
-					$this->answer = $client->unionRatingList($parameter["zps"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->unionRatingList($parameter["zps"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Verbandsliste": // Bestenliste eines Verbands
 					// zps = ein- bis fünfstellig
@@ -176,8 +179,8 @@ class DeWIS
 					// alter_bis = Alter bis (>=0 && <=140)
 					// geschlecht ('m', 'f', '')
 					$tstart = microtime(true);
-					$this->answer = $client->bestOfFederation($parameter["zps"],$parameter["limit"],$parameter["alter_von"],$parameter["alter_bis"],$parameter["geschlecht"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->bestOfFederation($parameter["zps"],$parameter["limit"],$parameter["alter_von"],$parameter["alter_bis"],$parameter["geschlecht"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Turnierliste": // Turnierliste
 					// von = Datum von als Unixzeit
@@ -188,38 +191,38 @@ class DeWIS
 					// bis = Datum im Format JJJJ-MM-TT
 					// von/bis muß im gleichen Jahr liegen!
 					$tstart = microtime(true);
-					$this->answer = $client->tournamentsByPeriod($parameter["von"],$parameter["bis"],$parameter["zps"],true,"",$parameter["suche"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->tournamentsByPeriod($parameter["von"],$parameter["bis"],$parameter["zps"],true,"",$parameter["suche"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Turnierauswertung": // Auswertung eines Turniers
 					// code = Turniercode, z.B. B148-C12-SLG
 					$tstart = microtime(true);
-					$this->answer = $client->tournament($parameter["code"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->tournament($parameter["code"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Turnierergebnisse": // Ergebnisse eines Turniers
 					// code = Turniercode, z.B. B148-C12-SLG
 					$tstart = microtime(true);
-					$this->answer = $client->tournamentPairings($parameter["code"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->tournamentPairings($parameter["code"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				case "Verbaende": // Verbände einer ZPS-Struktur laden
 					// zps = fünfstellig
 					$tstart = microtime(true);
-					$this->answer = $client->organizations($parameter["zps"]);
-					$this->answertime = microtime(true) - $tstart;
+					self::$answer = $client->organizations($parameter["zps"]);
+					self::$answertime = microtime(true) - $tstart;
 					break;
 				default:
 			}
 
 /*
 			echo "<pre>";
-			print_r($this->answer);
+			print_r(self::$answer);
 			echo "</pre>";
 */
 
 			// Abfrage erfolgreich
-			return $this->answer;
+			return self::$answer;
 
 		}
 
@@ -229,48 +232,48 @@ class DeWIS
 			if(ini_get('default_socket_timeout') < $time_request) 
 			{
 				// Timeout Fehler!
-				$this->error = "Die DeWIS-Datenbank unter svw.info ist nicht erreichbar.";
+				self::$error = "Die DeWIS-Datenbank unter svw.info ist nicht erreichbar.";
 			}
 			else 
 			{
 				switch($f->faultstring)
 				{
 					case "that is not a valid federation id":
-						$this->error = "Ungültiger Verbandscode [1]";
+						self::$error = "Ungültiger Verbandscode [1]";
 						break;
 					case "that federation does not exists":
-						$this->error = "Ungültiger Verbandscode [2]";
+						self::$error = "Ungültiger Verbandscode [2]";
 						break;
 					case "that is not a valid union id":
 						break;
 					case "that union does not exists":
-						$this->error = "Ungültiger Vereinscode";
-						$this->errorcode = 410; // Gone (Die angeforderte Ressource wird nicht länger bereitgestellt und wurde dauerhaft entfernt.) - Vorschlag Mossakowski
+						self::$error = "Ungültiger Vereinscode";
+						self::$errorcode = 410; // Gone (Die angeforderte Ressource wird nicht länger bereitgestellt und wurde dauerhaft entfernt.) - Vorschlag Mossakowski
 						$this->log('ZPS-Vereinscode '.$parameter["zps"].' ist ungültig ('.$f->faultstring.')', 'DeWIS-Abfrage', TL_ERROR);
 						// Abbruch nicht möglich, da auch gültige Anfragen kommen: http://www.schachbund.de/verein/A0800.html
 						//header('HTTP/1.1 410 Gone');
 						//die('ZPS-Vereinscode '.$parameter["zps"].' ist ungueltig ('.$f->faultstring.')');
 						break;
 					case "Could not connect to host":
-						$this->error = "Die DeWIS-Datenbank unter svw.info ist nicht erreichbar.";
+						self::$error = "Die DeWIS-Datenbank unter svw.info ist nicht erreichbar.";
 						break;
 					case "that is not a member":
-						$this->error = "Der Spieler ist kein Mitglied des DSB.";
+						self::$error = "Der Spieler ist kein Mitglied des DSB.";
 						break;
 					case "that is not a valid surname":
-						$this->error = "Ungültiger Nachname";
+						self::$error = "Ungültiger Nachname";
 						break;
 					case "that is not a valid tournament":
-						$this->error = "Ungültiges Turnier";
+						self::$error = "Ungültiges Turnier";
 						break;
 					case "tournament level not valid":
-						$this->error = "Ungültige ZPS für Verband";
+						self::$error = "Ungültige ZPS für Verband";
 						break;
 					case "surname too short":
-						$this->error = "Nachname zu kurz";
+						self::$error = "Nachname zu kurz";
 						break;
 					default:
-						$this->error = $f->faultstring;
+						self::$error = $f->faultstring;
 				}
 			}
 		}
@@ -292,7 +295,7 @@ class DeWIS
 	*/
 	public function Antwortzeit()
 	{
-		return $this->answertime;
+		return self::$answertime;
 	}
 
 	/*
@@ -300,7 +303,7 @@ class DeWIS
 	*/
 	public function ZeigeFehler()
 	{
-		return $this->error;
+		return self::$error;
 	}
 
 	/*
@@ -308,7 +311,7 @@ class DeWIS
 	*/
 	public function ZeigeFehlercode()
 	{
-		return $this->errorcode;
+		return self::$errorcode;
 	}
 
 	/*

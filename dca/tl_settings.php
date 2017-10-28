@@ -3,7 +3,7 @@
 /**
  * palettes
  */
-array_push($GLOBALS['TL_DCA']['tl_settings']['palettes']['__selector__'], 'dewis_cache');
+$GLOBALS['TL_DCA']['tl_settings']['palettes']['__selector__'][] = 'dewis_cache';
 $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{dewis_legend:hide},dewis_cache';
 $GLOBALS['TL_DCA']['tl_settings']['subpalettes']['dewis_cache'] = 'dewis_cache_default,dewis_cache_verband,dewis_cache_referent';
 
