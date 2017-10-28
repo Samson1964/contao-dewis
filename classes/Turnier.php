@@ -113,7 +113,7 @@ class Turnier extends \Module
 			setcookie('dewis-verband-zps', rtrim(\Input::get('zps'),0), time()+8640000, '/');
 			
 			// GET-Parameter korrigieren
-			$last_months = 0 + \Input::get('last_months');
+			$last_months = 0 + (int)\Input::get('last_months');
 			$from_year = sprintf('%04d',\Input::get('from_year'));
 			$to_year = sprintf('%04d',\Input::get('to_year'));
 			$from_month = sprintf('%02d',\Input::get('from_month'));
