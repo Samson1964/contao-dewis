@@ -347,19 +347,28 @@ class DeWIS
 		# --------------------------------------------------------
 	
 		// Mit MySQL-Server verbinden
-		$status = @mysql_connect("mysql4.deutscher-schachbund.de","db107305_1","dwzdb1708");
-		if($status)
+		//$status = @mysqli_connect("mysql4.deutscher-schachbund.de","db107305_1","dwzdb1708","db107305_1");
+		$mysqli = new \mysqli("mysql4.deutscher-schachbund.de","db107305_1","dwzdb1708","db107305_1");
+		if ($mysqli->connect_errno)
 		{
-			mysql_select_db("db107305_1");
+			// Keine Antwort von der Datenbank
+			return false;
+		}
+		else
+		{
 			$sql = "SELECT pkz_alt FROM pkz WHERE pkz_neu = '$id'";
-			$ergebnis = mysql_query($sql);
-			if($row = mysql_fetch_object($ergebnis))
+			$ergebnis = $mysqli->prepare($sql);
+			$ergebnis->execute();
+			$result = $ergebnis->get_result();
+			if($row = $result->fetch_object())
 			{
 				// Alte PKZ gefunden, dann nach einer ZPS suchen
 				$pkz = $row->pkz_alt;
 				$sql = "SELECT zpsver,szpsmgl,sstatus FROM dwz_spi WHERE pkz = '$pkz'";
-				$ergebnis = mysql_query($sql);
-				while($row = mysql_fetch_object($ergebnis))
+				$ergebnis = $mysqli->prepare($sql);
+				$ergebnis->execute();
+				$result = $ergebnis->get_result();
+				while($row = $result->fetch_object())
 				{
 					// mind. eine ZPS gefunden
 					return array("zps" => $row->zpsver."-".$row->szpsmgl,"status" => $row->sstatus);

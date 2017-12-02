@@ -1,5 +1,9 @@
 # Abfrage der DeWIS-API
 
+## Version 1.2.3 (2017-12-02)
+
+Change: Kompatibilität mit PHP 7 bei Abfrage der alten Datenbank hergestellt
+
 ## Version 1.2.2 (2017-10-28)
 
 Fix: Bei Verbandslistenformularen wurde keine Verbandsauswahl mehr angezeigt. Verbandscode von 00000 auf 000 geändert.
