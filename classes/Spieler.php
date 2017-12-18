@@ -76,7 +76,7 @@ class Spieler extends \Module
 		global $objPage;
 
 		// Blacklist laden
-		$Blacklist = \Samson\DeWIS\DeWIS::blacklist();
+		$Blacklist = \Samson\DeWIS\DeWIS::Blacklist();
 		
 		// Spielerkartei angefordert?
 		$id = \Input::get('id'); 
@@ -274,7 +274,7 @@ class Spieler extends \Module
 			$this->Template->fide_nation  = ($resultArr['result']->member->fideNation) ? ($resultArr['result']->member->gender == 'f' ? sprintf('<a href="https://ratings.fide.com/topfed.phtml?tops=1&ina=1&country=%s" target="_blank">%s</a>',$resultArr['result']->member->fideNation, $resultArr['result']->member->fideNation) : sprintf('<a href="https://ratings.fide.com/topfed.phtml?tops=0&ina=1&country=%s" target="_blank">%s</a>',$resultArr['result']->member->fideNation, $resultArr['result']->member->fideNation)) : '-';
 
 			// Alte Datenbank abfragen
-			if($altdb = \Samson\DeWIS\DeWIS::AlteDatenbank($id))
+			if(!\Samson\DeWIS\DeWIS::Karteisperre($id) && $altdb = \Samson\DeWIS\DeWIS::AlteDatenbank($id))
 			{
 				$this->Template->historie = ($altdb["status"] == "L") ? 'Vorhanden, aber zuletzt abgemeldet' : sprintf("<a href=\"http://altdwz.schachbund.de/db/spieler.html?zps=%s\" target=\"_blank\">Alte Karteikarte</a>",$altdb["zps"]);
 			}

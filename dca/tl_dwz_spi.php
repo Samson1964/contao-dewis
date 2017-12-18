@@ -126,7 +126,7 @@ $GLOBALS['TL_DCA']['tl_dwz_spi'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array('verstorben', 'addImage', 'blocked'), 
-		'default'                     => '{name_legend},vorname,nachname,titel,geschlecht,typ;{geburt_legend:hide},geburtstag,geburtsort,verstorben;{contact_legend:hide},plz,ort,strasse,telefon1,email1,telefon2,email2,telefon3,email3,telefax;{club_legend:hide},dewisID,zpsver,zpsmgl,status,funktion;{fide_legend:hide},fideID,fideNation,fideElo,fideTitel;{elobase_legend:hide},altpkz,elobase;{dwz_legend:hide},dwzwoche,dwz,dwzindex;{image_legend:hide},addImage;{info_legend:hide},info,homepage;{ban_legend:hide},blocked;{publish_legend},published'
+		'default'                     => '{name_legend},vorname,nachname,titel,geschlecht,typ;{geburt_legend:hide},geburtstag,geburtsort,verstorben;{contact_legend:hide},plz,ort,strasse,telefon1,email1,telefon2,email2,telefon3,email3,telefax;{club_legend:hide},dewisID,zpsver,zpsmgl,status,funktion;{fide_legend:hide},fideID,fideNation,fideElo,fideTitel;{elobase_legend:hide},altpkz,elobase;{dwz_legend:hide},dwzwoche,dwz,dwzindex;{image_legend:hide},addImage;{info_legend:hide},info,homepage;{ban_legend:hide},blocked,link_altkartei;{publish_legend},published'
 	),
 
 	// Subpalettes
@@ -716,6 +716,14 @@ $GLOBALS['TL_DCA']['tl_dwz_spi'] = array
 			'eval'                    => array('submitOnChange'=>true),
 			'sql'                     => "char(1) NOT NULL default ''"
 		), 
+		'link_altkartei' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_dwz_spi']['link_altkartei'],
+			'inputType'               => 'checkbox',
+			'filter'                  => true,
+			'eval'                    => array('tl_class' => 'w50','isBoolean' => true),
+			'sql'                     => "char(1) NOT NULL default ''"
+		),
 		'grund' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_dwz_spi']['grund'],

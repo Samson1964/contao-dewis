@@ -800,7 +800,28 @@ class DeWIS
 		return $blacklist;
 	}		
 
+
 	/**
+	 * Liefert den Status der Sperre der alten Karteikarte zurück 
+	 *
+	 */
+	public function Karteisperre($id)
+	{
+		$result = \Database::getInstance()->prepare("SELECT link_altkartei FROM tl_dwz_spi WHERE dewisID = ?")
+										  ->execute($id);
+		
+		// Gefunden
+		if($result->numRows)
+		{
+			return $result->link_altkartei;
+		}
+
+		return false;
+	}
+
+
+	/**
+
 	 * Liefert den Hinweistext zwecks Anmeldung zurück 
 	 *
 	 */

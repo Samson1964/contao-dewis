@@ -1,5 +1,9 @@
 # Abfrage der DeWIS-API
 
+## Version 1.2.4 (2017-12-18)
+
+Add: Option für Ausblendung des Links zur alten Karteikarte
+
 ## Version 1.2.3 (2017-12-02)
 
 Change: Kompatibilität mit PHP 7 bei Abfrage der alten Datenbank hergestellt
