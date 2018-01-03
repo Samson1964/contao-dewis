@@ -276,7 +276,7 @@ class Spieler extends \Module
 			// Alte Datenbank abfragen
 			if(!\Samson\DeWIS\DeWIS::Karteisperre($id) && $altdb = \Samson\DeWIS\DeWIS::AlteDatenbank($id))
 			{
-				$this->Template->historie = ($altdb["status"] == "L") ? 'Vorhanden, aber zuletzt abgemeldet' : sprintf("<a href=\"http://altdwz.schachbund.de/db/spieler.html?zps=%s\" target=\"_blank\">Alte Karteikarte</a>",$altdb["zps"]);
+				$this->Template->historie = ($altdb["status"] == "L") ? 'Vorhanden, aber zuletzt abgemeldet' : sprintf("<a href=\"http://altdwz.schachbund.net/db/spieler.html?zps=%s\" target=\"_blank\">Alte Karteikarte</a>",$altdb["zps"]);
 			}
 			else $this->Template->historie = 'Ohne alte Karteikarte';
 

@@ -1,5 +1,7 @@
 # Abfrage der DeWIS-API
 
+Fix: Link zur alten Datenbank korrigiert
+
 ## Version 1.2.4 (2017-12-18)
 
 Add: Option für Ausblendung des Links zur alten Karteikarte
