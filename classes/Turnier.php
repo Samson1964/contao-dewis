@@ -254,6 +254,7 @@ class Turnier extends \Module
 						'Spielername'	=> $Blacklist[$t->pid] ? '***' : \Samson\DeWIS\Helper::Spielername($t, $gesperrt),
 						'Spielername'	=> $Blacklist[$t->pid] ? '***' : ($gesperrt ? sprintf("%s,%s%s", $t->surname, $t->firstname, $t->title ? ',' . $t->title : '') : sprintf("<a href=\"".ALIAS_SPIELER."/%s.html\">%s</a>", $t->pid, sprintf("%s,%s%s", $t->surname, $t->firstname, $t->title ? ',' . $t->title : ''))),
 						'Scoresheet'	=> $Blacklist[$t->pid] ? '' : ($gesperrt ? '' : sprintf("<a href=\"".ALIAS_TURNIER."/%s/%s.html\">SC</a>", $result_tausw->tournament->tcode, $t->pid)),
+						'DSB-Mitglied'	=> sprintf("<a href=\"".ALIAS_TURNIER."/%s/%s.html\">SC</a>", $result_tausw->tournament->tcode, $t->pid),
 						'DWZ'			=> ($t->ratingOld) ? $t->ratingOld : '',
 						'Punkte'		=> 0,
 						'Partien'		=> 0,
@@ -391,6 +392,7 @@ class Turnier extends \Module
 				(
 					'Spielername'	=> $playerArr[$playerId]['Spielername'],
 					'Scoresheet'	=> $playerArr[$playerId]['Scoresheet'],
+					'DSB-Mitglied'	=> $playerArr[$playerId]['DSB-Mitglied'],
 					'DWZ'			=> $playerArr[$playerId]['DWZ'],
 					'Punkte'		=> $playerArr[$playerId]['Punkte'],
 					'Partien'		=> $playerArr[$playerId]['Partien'],
@@ -412,6 +414,7 @@ class Turnier extends \Module
 					'Nummer'		=> $i,
 					'Spielername'	=> $dataArr['Spielername'],
 					'Scoresheet'	=> $dataArr['Scoresheet'],
+					'DSB-Mitglied'	=> $dataArr['DSB-Mitglied'],
 					'DWZ'			=> $dataArr['DWZ'],
 					'Punkte'		=> $dataArr['Punkte'],
 					'Partien'		=> $dataArr['Partien'],
@@ -527,6 +530,8 @@ class Turnier extends \Module
 			else
 			{
 				$this->Template->daten = $playerArr;
+				//if(!$gesperrt) 
+				$this->Vereinslose($theader, $playerArr); // Vereinslosen-Statistik schreiben
 			}
 
 			//\Samson\DeWIS\DeWIS::debug($playerArr);
@@ -718,6 +723,99 @@ class Turnier extends \Module
 			$this->Template->form_bisjahr = implode("\n",$opArray);
 		}
 
+	}
+	
+	function Vereinslose($Turnierheader, $Spieler)
+	{
+		// Statistik- und Ausgabedatei festlegen
+		$statistikdatei = TL_ROOT.'/Vereinslose.dat';
+		$ausgabedatei = TL_ROOT.'/Vereinslose.csv';
+		// Statistikdatei einlesen
+		if(file_exists($statistikdatei)) $daten = unserialize(file_get_contents($statistikdatei));
+		else $daten = array();
+
+		// Ausländisches Turnier?
+		if(substr($Turnierheader['Turniercode'],5,1) == 'K') $ausland = true;
+		else $ausland = false;
+		
+		if(!$ausland)
+		{
+			// Zähler anlegen
+			$counter = array(0, 0);
+			// Statistik anlegen, wenn noch nicht vorhanden
+			if(!$daten[$Turnierheader['Turniercode']])
+			{
+				$daten[$Turnierheader['Turniercode']] = array();
+			}
+
+			// Vereinslose/Mitglieder zählen
+			foreach($Spieler as $item)
+			{
+				if($item['DSB-Mitglied'])
+				{
+					// Spieler ist DSB-Mitglied
+					$counter[0]++;
+					log_message($Turnierheader['Turniername'].'|'.$item['DSB-Mitglied'].'|Mitglied','vereinslose.log');
+				}
+				else
+				{
+					// Spieler ist vereinslos
+					$counter[1]++;
+					log_message($Turnierheader['Turniername'].'|'.$item['DSB-Mitglied'].'|vereinslos','vereinslose.log');
+				}
+			}
+			// Statistik (über)schreiben
+			$daten[$Turnierheader['Turniercode']]['TURNIER'] = $this->is_utf8($Turnierheader['Turniername']) ? utf8_decode($Turnierheader['Turniername']) : $Turnierheader['Turniername'];
+			$daten[$Turnierheader['Turniercode']]['JAHR'] = substr($Turnierheader['Turnierende'],6,4);
+			$daten[$Turnierheader['Turniercode']]['MONAT'] = substr($Turnierheader['Turnierende'],3,2);
+			$daten[$Turnierheader['Turniercode']]['TAG'] = substr($Turnierheader['Turnierende'],0,2);
+			$daten[$Turnierheader['Turniercode']]['SPIELER'] = $Turnierheader['Spieler'];
+			$daten[$Turnierheader['Turniercode']]['MITGLIEDER'] = $counter[0];
+			$daten[$Turnierheader['Turniercode']]['VEREINSLOSE'] = $counter[1];
+
+			// Statistikdatei überschreiben
+			$fp = fopen($statistikdatei, 'w');
+			fputs($fp, serialize($daten));
+			fclose($fp);
+
+			// Ausgabedatei überschreiben
+			$fp = fopen($ausgabedatei, 'w');
+			// Vereinslose/Mitglieder zählen
+			$zeile = 0;
+			foreach($daten as $key => $value)
+			{
+				if($zeile == 0) fputs($fp, "TURNIERCODE;TURNIER;JAHR;MONAT;TAG;SPIELER;MITGLIEDER;VEREINSLOSE\r\n");
+				if($key)
+				{
+					fputs($fp, $key.";");
+					fputs($fp, $value['TURNIER'].";");
+					fputs($fp, $value['JAHR'].";");
+					fputs($fp, $value['MONAT'].";");
+					fputs($fp, $value['TAG'].";");
+					fputs($fp, $value['SPIELER'].";");
+					fputs($fp, $value['MITGLIEDER'].";");
+					fputs($fp, $value['VEREINSLOSE']."\r\n");
+				}
+				$zeile++;
+			}
+			fclose($fp);
+		}
+	}
+
+	function is_utf8($str){
+		$strlen = strlen($str);
+		for($i=0; $i<$strlen; $i++){
+		  $ord = ord($str[$i]);
+		  if($ord < 0x80) continue; // 0bbbbbbb
+		  elseif(($ord&0xE0)===0xC0 && $ord>0xC1) $n = 1; // 110bbbbb (exkl C0-C1)
+		  elseif(($ord&0xF0)===0xE0) $n = 2; // 1110bbbb
+		  elseif(($ord&0xF8)===0xF0 && $ord<0xF5) $n = 3; // 11110bbb (exkl F5-FF)
+		  else return false; // ungültiges UTF-8-Zeichen
+		  for($c=0; $c<$n; $c++) // $n Folgebytes? // 10bbbbbb
+		    if(++$i===$strlen || (ord($str[$i])&0xC0)!==0x80)
+		      return false; // ungültiges UTF-8-Zeichen
+		}
+		return true; // kein ungültiges UTF-8-Zeichen gefunden
 	}
 
 }

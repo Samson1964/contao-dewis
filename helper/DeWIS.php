@@ -15,6 +15,7 @@ class DeWIS
 	static $answer;
 	static $answertime;
 	static $error;
+	static $errorcode;
 	
 	/**
 	 * Klasse initialisieren
@@ -127,6 +128,20 @@ class DeWIS
 	{
 		try
 		{
+			// Gustaf Mossakowski am 06.05.2018:
+			// svw.info ist generell aus vielen Browsern nicht mehr erreichbar.
+			// Die Symantec-Zerfikate werden nicht mehr als sicher angesehen.
+			// https://blog.qualys.com/ssllabs/2017/09/26/google-and-mozilla-deprecating-existing-symantec-certificates
+			// https://www.ssllabs.com/ssltest/analyze.html?d=dwz.svw.info
+			// Ein temporärer Ausweg bis zur Installation neuer Zertifikate auf svw.info könnte sein (Parameter stream_context):
+			$context = stream_context_create([
+				'ssl' => [
+					'verify_peer' => false,
+					'verify_peer_name' => false,
+					'allow_self_signed' => true
+				]
+			]);
+
 			$time_start = microtime(true);
 			$client = new \SOAPClient(
 				NULL,
@@ -135,7 +150,8 @@ class DeWIS
 					'uri'                => 'https://soap',
 					'style'              => SOAP_RPC,
 					'use'                => SOAP_ENCODED,
-					'connection_timeout' => 15
+					'connection_timeout' => 15,
+					'stream_context'     => $context
 				)
 			);
 
@@ -178,6 +194,7 @@ class DeWIS
 					// alter_von = Alter von (>=0)
 					// alter_bis = Alter bis (>=0 && <=140)
 					// geschlecht ('m', 'f', '')
+					if($parameter["zps"] == '000') $parameter["zps"] = '00000';
 					$tstart = microtime(true);
 					self::$answer = $client->bestOfFederation($parameter["zps"],$parameter["limit"],$parameter["alter_von"],$parameter["alter_bis"],$parameter["geschlecht"]);
 					self::$answertime = microtime(true) - $tstart;
@@ -247,9 +264,9 @@ class DeWIS
 					case "that is not a valid union id":
 						break;
 					case "that union does not exists":
-						self::$error = "Ungültiger Vereinscode";
-						self::$errorcode = 410; // Gone (Die angeforderte Ressource wird nicht länger bereitgestellt und wurde dauerhaft entfernt.) - Vorschlag Mossakowski
-						$this->log('ZPS-Vereinscode '.$parameter["zps"].' ist ungültig ('.$f->faultstring.')', 'DeWIS-Abfrage', TL_ERROR);
+						//self::$error = "Ungültiger Vereinscode";
+						//self::$errorcode = 410; // Gone (Die angeforderte Ressource wird nicht länger bereitgestellt und wurde dauerhaft entfernt.) - Vorschlag Mossakowski
+						//\System::log('ZPS-Vereinscode '.$parameter["zps"].' ist ungültig ('.$f->faultstring.')', 'DeWIS-Abfrage', TL_ERROR);
 						// Abbruch nicht möglich, da auch gültige Anfragen kommen: http://www.schachbund.de/verein/A0800.html
 						//header('HTTP/1.1 410 Gone');
 						//die('ZPS-Vereinscode '.$parameter["zps"].' ist ungueltig ('.$f->faultstring.')');

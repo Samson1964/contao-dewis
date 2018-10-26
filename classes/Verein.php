@@ -264,8 +264,10 @@ class Verein extends \Module
 				$this->Template->fehler = \Samson\DeWIS\DeWIS::ZeigeFehler();
 				if(!$result && !$this->Template->fehler) \Samson\DeWIS\Helper::get404(); // VZPS nicht gefunden
 				
-				$objPage->pageTitle = 'Suche nach Vereinen in '.$liste['verbaende'][$zps]['name'];
-				$this->Template->subHeadline = 'Suche nach Vereinen in '.$liste['verbaende'][$zps]['name']; // Unterüberschrift setzen
+				// Titel-Ausgabe modifizieren
+				$ausgabetitel = $liste['verbaende'][$zps]['name'] ? $liste['verbaende'][$zps]['name'] : 'ZPS-Raum '.$zps;
+				$objPage->pageTitle = 'Suche nach Vereinen in '.$ausgabetitel;
+				$this->Template->subHeadline = 'Suche nach Vereinen in '.$ausgabetitel; // Unterüberschrift setzen
 	
 				// Templates füllen
 				$this->Subtemplate = new \FrontendTemplate($this->subTemplate);

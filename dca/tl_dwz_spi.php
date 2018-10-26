@@ -48,7 +48,7 @@ $GLOBALS['TL_DCA']['tl_dwz_spi'] = array
 			'mode'                    => 1,
 			'fields'                  => array('nachname', 'vorname'),
 			'flag'                    => 3,
-			'panelLayout'             => 'sort,filter;search,limit'
+			'panelLayout'             => 'filter;sort;search,limit'
 		),
 		'label' => array
 		(
@@ -235,6 +235,8 @@ $GLOBALS['TL_DCA']['tl_dwz_spi'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_dwz_spi']['geburtstag'],
 			'exclude'                 => true,
 			'search'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 8,
 			'inputType'               => 'text',
 			'eval'                    => array
 			(
@@ -449,6 +451,7 @@ $GLOBALS['TL_DCA']['tl_dwz_spi'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_dwz_spi']['status'],
 			'exclude'                 => true,
 			'search'                  => true,
+			'filter'                  => true,
 			'inputType'               => 'select',
 			'options'                 => array
 			(

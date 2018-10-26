@@ -84,7 +84,7 @@ function searchByName($client) {
     
     // nachname, vorname, Start, Anzahl Datensaetze
     // vorname kann leer sein, ebenso Start und Anzahl
-    $members = $client->searchByName("me", "", 0,30);
+    $members = $client->searchByName("hoppe", "", 0,30);
     
   echo "<table border='1'>";
   
@@ -207,7 +207,7 @@ function tournamentCardByZPS($client) {
     echo '<h1>Turnierkarte nach ZPS (Format: <em>VKZ</em>-<em>Mitgliedsnr.</em>)</h1>';
     
     // ZPS-Nummer: Format VKZ-Mitgliedsnr
-    $tcard = $client->tournamentCardForZps("C0132-88");
+    $tcard = $client->tournamentCardForZps("30052-1083");
   
     echo "<dl><dt>".$tcard->member->surname.", ".$tcard->member->firstname;
     if (!empty($tcard->member->title)) {
@@ -336,7 +336,7 @@ function tournament($client) {
     echo '<h1>Turnierauswertung</h1>';
     
     // Turniercode
-    $tournament = $client->tournament("B148-C12-SLG");
+    $tournament = $client->tournament("B813-830-HT1");
 
     echo "<h3>".$tournament->tournament->tname." (".$tournament->tournament->tcode.") </h3>";
     echo "<dl>";
