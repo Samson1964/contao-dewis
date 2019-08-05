@@ -1,0 +1,224 @@
+1895 	180	C0100 	Bezirk Oberschwaben 	Link 			15.01.1988
+1897 	2549	C0101 	Post-SV Ulm 	Link 	1133 		15.01.1988 		25
+1898 	2546	C0104 	SF Vöhringen 	Link 	1224 		15.01.1988 		79
+1899 	2545	C0105 	TSV Langenau 		1083 		15.01.1988 		41
+1900 	2543	C0107 	SF Blaustein 	Link 	1216 		15.01.1988 		11
+1901 	2541	C0109 	SC Obersulmetingen 	Link 	2171 		15.01.1988 		50
+1902 	4287	C010A 	TSG Ehingen 1848 e.V. 	Link 	1046 	01.01.2011 	01.07.2011 		29
+1903 	2540	C0110 	TSV Berghülen 	Link 	1018 		15.01.1988 		43
+1904 	2537	C0113 	TSV Laichingen 	Link 	1077 		15.01.1988 		43
+1905 	2534	C0116 	TG Biberach 	Link 	2032 		15.01.1988 		55
+1906 	2532	C0118 	TSV 1880 Neu-Ulm 	Link 	70575 		15.01.1988 		21
+1907 	2526	C0124 	SC Laupheim 1962 e.V. 	Link 	2174 		15.01.1988 		35
+1908 	2525	C0125 	SF Riedlingen 	Link 	2175 		15.01.1988 		39
+1909 	2523	C0127 	TSV Seissen e.V. 	Link 	1119 		15.01.1988 		21
+1910 	2519	C0131 	SC Weiße Dame Ulm e.V. 	Link 	1024 		15.01.1988 		116
+1911 	2513	C0137 	SV Jedesheim 1921 	Link 	70380 		15.01.1988 		77
+1912 	2512	C0138 	TV Wiblingen 	Link 	1155 		15.01.1988 		24
+1913 	2511	C0139 	SV Steinhausen 	Link 	2108 		15.01.1988 		18
+1914 	2510	C0140 	TSV Reute e.V. 		2089 		15.07.1989 		19
+1915 	2508	C0142 	TSV Westerstetten 	Link 	1165 		15.12.1991 		13
+1916 	2507	C0143 	SV Thalfingen 	Link 	70756 		15.01.1997 		21
+1918 	2548	C0102 	SK Markdorf 	Link 	4095 		15.01.1988 		41
+1919 	2544	C0106 	SC Lindau 	Link 	4117 		15.01.1988 		49
+1920 	4521	C010C 	TG Bad Waldsee 1848 		14028 	12.06.2016 	12.06.2016 		16
+1921 	2539	C0111 	SC Tettnang 	Link 	4087 		15.01.1988 		42
+1922 	2538	C0112 	SC Wangen 	Link 	14243 		15.01.1988 		70
+1923 	2536	C0114 	SV Friedrichshafen 	Link 	4090 		15.01.1988 		54
+1924 	2535	C0115 	SF Ravensburg 	Link 	14236 		15.01.1988 		32
+1925 	2533	C0117 	SF Wetzisreute 	Link 	14238 		15.01.1988 		53
+1926 	2530	C0120 	SF Mengen 	Link 	19107 		15.01.1988 		33
+1927 	2529	C0121 	SV Weingarten 	Link 	14246 		15.01.1988 		57
+1928 	2528	C0122 	SK Leutkirch 	Link 	14248 		15.01.1988 		35
+1929 	2520	C0130 	SC Bad Schussenried e.V. 	Link 	2172 		15.01.1988 		16
+1930 	2518	C0132 	SC Bad Saulgau 		19105 		15.01.1988 		8
+1931 	2517	C0133 	SC Weiler im Allgäu e. V. 	Link 	14325 		15.01.1988 		50
+1932 	2509	C0141 	SF Ertingen 		2189 		15.01.1990 		23
+1933 	179	C0200 	Bezirk Alb/Schwarzwald 	Link 			02.08.1997
+1935 	2493	C0215 	SC Möhringen 1961 		23132 		15.01.1988 		20
+1936 	2492	C0216 	SG Donautal Tuttlingen 	Link 	23126 		15.01.1988 		63
+1937 	2486	C0222 	SV Rottweil 	Link 	17193 		13.08.1997 		54
+1938 	2482	C0226 	SR Spaichingen 	Link 	23102 		15.01.1988 		85
+1939 	2478	C0230 	SR Heuberg-Gosheim 		23139 		15.01.1988 		43
+1940 	2476	C0232 	SV Trossingen 	Link 	23128 		15.01.1988 		33
+1942 	2496	C0211 	SK Horb 	Link 	7141 		15.01.1988 		51
+1943 	2495	C0212 	SC Klosterreichenbach 	Link 	7144 		15.01.1988 		18
+1944 	2489	C0219 	SC Oberndorf 	Link 	17195 		15.01.1988 		17
+1945 	2472	C0238 	SF Dornstetten-Pfalzgrafenweiler e.V. 	Link 	7146 		15.01.1988 		59
+1946 	2468	C0242 	SG Schramberg-Lauterbach 	Link 	17234 		15.10.2003 		35
+1948 	2505	C0202 	SV Balingen 	Link 	24231 		15.01.1988 		157
+1949 	2504	C0203 	SC Bisingen-Steinhofen 	Link 	24233 		15.01.1988 		86
+1950 	2502	C0205 	SF Geislingen 1990 e.V. 	Link 	24268 		15.07.1991 		70
+1951 	2501	C0206 	SG Turm Albstadt 1902 e.V. 	Link 	24235 		15.01.1988 		72
+1952 	2498	C0209 	SC Hechingen 		24228 		15.01.1988 		22
+1953 	2497	C0210 	SC Heinstetten 		24242 		15.01.1988 		15
+1954 	2490	C0218 	SC Nusplingen 	Link 	24226 		15.01.1988 		77
+1955 	2488	C0220 	SC Rangendingen 		24206 		15.01.1988 		37
+1956 	2480	C0228 	SV Stockenhausen-Frommern 	Link 	24195 		15.01.1988 		38
+1957 	2474	C0235 	Sfr. Winterlingen 1966 e.V. 		24244 		15.01.1988 		29
+1958 	2473	C0237 	SV Schömberg e.V. 	Link 	24234 		25.08.1997 		22
+1959 	2469	C0241 	SG Dotternhausen 	Link 	24299 		15.07.1996 		27
+1960 	178	C0300 	Bezirk Neckar-Fils 	Link 			02.08.1997
+1964 	2467	C0301 	SV Altbach e.V. 	Link 	6303 		15.01.1988 		55
+1965 	2466	C0302 	Schachgemeinschaft Filder 	Link 	6296 		15.01.1988 		18
+1966 	2465	C0303 	SF Deizisau 	Link 	6309 		15.01.1988 		80
+1967 	2464	C0304 	TSV Denkendorf 	Link 	6032 		28.12.2000 		13
+1968 	2463	C0305 	SV Dicker Turm Esslingen 	Link 	6367 		15.01.1988 		42
+1969 	2462	C0306 	TSV/RSK Esslingen 	Link 	6065 		15.01.1988 		52
+1970 	2461	C0307 	TSG Esslingen 	Link 	6055 		15.01.1988 		10
+1971 	2460	C0308 	TSV Grafenberg 	Link 	16032 		15.01.1988 		24
+1972 	2458	C0310 	SF Nabern 	Link 	6302 		15.01.1988 		36
+1973 	2457	C0311 	SF 47 Neckartenzlingen 	Link 	6301 		15.01.1988 		23
+1974 	2456	C0312 	SC Ostfildern 1952 e.V. 	Link 	6300 		15.01.1988 		90
+1975 	2455	C0313 	SV Nürtingen 1920 	Link 	6290 		06.01.1998 		74
+1976 	2454	C0314 	SF Plochingen 	Link 	6312 		15.01.1988 		71
+1977 	2452	C0316 	SV 1947 Wendlingen 	Link 	6308 		15.01.1988 		40
+1978 	2450	C0318 	SK Wernau 	Link 	6307 		15.01.1988 		63
+1980 	4519	C030B 	Schachritter Kirchheim/Teck 	Link 	6505 	17.03.2016 	09.06.2016 		27
+1981 	2446	C0322 	SV Ebersbach 	Link 	8216 		15.01.1988 		34
+1982 	2444	C0324 	SV Faurndau 	Link 	8224 		15.07.1990 		24
+1983 	2443	C0325 	SC Geislingen 1881 	Link 	8218 		15.01.1988 		28
+1984 	2441	C0327 	SF 1876 Göppingen 	Link 	8222 		15.01.1988 		69
+1985 	2440	C0328 	SC Kirchheim/Teck 	Link 	6306 		15.01.1988 		42
+1986 	2438	C0330 	TSG Salach 	Link 	8129 		15.01.1988 		23
+1987 	2420	C0351 	TSG Zell u.A. 		8164 		15.01.1988 		12
+1988 	2412	C0359 	Ssg Fils-Lauter e. V. 	Link 	8269 		15.01.1997 		33
+1990 	2434	C0334 	SV Urach 	Link 	16211 		25.08.1997 		45
+1991 	2433	C0335 	SF Ammerbuch 	Link 	22117 		15.01.1988 		26
+1992 	2432	C0336 	SV Dettingen Erms 	Link 	16205 		15.01.1988 		53
+1993 	2430	C0338 	SC BW Kirchentellinsfurt 		22150 		15.01.1988 		16
+1994 	2429	C0339 	Rochade Metzingen e.V. 	Link 	16223 		15.01.1988 		19
+1995 	2426	C0344 	SF Pfullingen 	Link 	16201 		15.01.1988 		102
+1996 	2425	C0345 	SV Pliezhausen 	Link 	16210 		15.01.1988 		15
+1997 	2424	C0346 	SV Reutlingen 	Link 	16103 		15.01.1988 		90
+1998 	2422	C0349 	SC Steinlach 	Link 	22153 		15.01.1988 		51
+1999 	2421	C0350 	SV Tübingen 1870 e.V. 	Link 	22130 		04.01.1998 		33
+2000 	2417	C0354 	SF Springer Rottenburg 	Link 	22145 		15.01.1988 		17
+2001 	2416	C0355 	SF Lichtenstein 	Link 	16209 		15.01.1988 		22
+2002 	2415	C0356 	SG Schönbuch 	Link 	22144 		15.01.1988 		27
+2003 	2414	C0357 	SK Bebenhausen 1992 	Link 	22176 		15.07.1992 		148
+2004 	2413	C0358 	Schwarz Weiß Münsingen 	Link 	16261 		15.01.1996 		11
+2005 	2410	C0361 	SG Königskinder Hohentübingen e.V. 	Link 	22223 	30.06.2006 	01.09.2006 		75
+2006 	177	C0400 	Bezirk Ostalb 	Link 			02.08.1997
+2009 	2409	C0401 	SV Aalen-Ellwangen e.V. 	Link 	13282 		15.01.1988 		46
+2010 	2408	C0402 	SC Tannhausen 1986 e.V. 	Link 	13288 		15.01.1988 		26
+2011 	2407	C0403 	SV Unterkochen 	Link 	13268 		15.01.1988 		63
+2012 	2405	C0405 	SV Crailsheim 	Link 	18152 		15.01.1988 		49
+2013 	2404	C0406 	SC 1875 Ellwangen 		13262 		15.01.1988 		18
+2014 	2391	C0419 	SV Oberkochen 	Link 	13212 		15.01.1988 		64
+2015 	2379	C0431 	SC Rainau 	Link 	13277 		15.01.1988 		30
+2016 	2374	C0436 	SC Bopfingen e.V. 		13275 		15.01.1988 		35
+2017 	2372	C0438 	SV Königsspringer Stödtlen 		13401 		15.07.1991 		16
+2019 	2402	C0408 	SV Giengen 	Link 	9116 		15.01.1988 		25
+2020 	2400	C0410 	SK Heidenheim 	Link 	9084 		21.10.2003 		51
+2021 	2398	C0412 	SC Heidenheim - Schnaitheim 		9118 		15.01.1988 		19
+2022 	2396	C0414 	RSV Heuchlingen 		9047 		15.01.1988 		22
+2023 	2395	C0415 	SF Königsbronn 		9113 		15.01.1988 		21
+2024 	2384	C0426 	SK Sontheim/Brenz e.V. 	Link 	9111 		15.01.1988 		143
+2026 	2401	C0409 	SC Grunbach 	Link 	15251 		15.01.1988 		97
+2027 	2397	C0413 	SF Heubach 	Link 	13202 		15.01.1988 		15
+2028 	2394	C0416 	SC Leinzell 	Link 	13276 		15.01.1988 		53
+2029 	2392	C0418 	SF 90 Spraitbach e.V. 	Link 	13312 		15.07.1990 		86
+2030 	2390	C0420 	SC Plüderhausen 	Link 	15246 		15.01.1988 		28
+2031 	2389	C0421 	Schachunion Schorndorf e.V. 	Link 	15242 		15.01.1988 		77
+2032 	2388	C0422 	SG Schwäbisch Gmünd 1872 e.V 	Link 	13273 		15.01.1988 		99
+2033 	2386	C0424 	SG Bettringen 	Link 	13161 		15.01.1988 		23
+2034 	2383	C0427 	TSF Welzheim 	Link 	15147 		15.01.1988 		47
+2035 	2377	C0433 	SF Waldstetten 1982 		13267 		15.01.1988 		18
+2036 	2371	C0439 	TSV Alfdorf e.V. 	Link 	15003 		27.06.2007 		25
+2037 	176	C0500 	Bezirk Stuttgart 	Link 		07.04.1979 	15.01.1988
+2041 	2365	C0506 	TSF Ditzingen 	Link 	12045 		15.01.1988 		34
+2042 	4601	C050B 	Zentrumsbauer Stuttgart 	Link 	20-479 	14.07.2018 	14.07.2018 		7
+2043 	2350	C0521 	Stuttgarter SF 1879 	Link 	20268 		15.01.1988 		165
+2044 	2348	C0523 	DJK Stuttgart-Süd 	Link 	20016 		15.01.1988 		54
+2045 	2343	C0528 	SG Fasanenhof 	Link 	20089 		15.01.1988 		27
+2046 	2339	C0532 	SC Sillenbuch 	Link 	20273 		15.01.1988 		37
+2047 	2333	C0538 	SV Stuttgart-Wolfbusch 1956 e.V. 	Link 	20274 		15.01.1988 		175
+2048 	2332	C0539 	SSV Zuffenhausen 	Link 	20216 		06.09.1997 		35
+2049 	2323	C0548 	SK "e4" Gerlingen 	Link 	12383 		15.01.1988 		61
+2050 	2319	C0552 	SC Schachmatt Botnang 	Link 	20267 		15.01.1988 		41
+2051 	2317	C0554 	GSV Hemmingen 	Link 	12073 		15.01.1988 		24
+2052 	2313	C0560 	TSV Heumaden 	Link 	20162 		15.07.1997 		28
+2053 	2310	C0563 	SC Feuerbach e. V. 	Link 	20416 		28.12.2004 		32
+2054 	4179	C0566 	TV Zazenhausen 		20212 		04.07.2008 		16
+2055 	4231	C0568 	DJK Sportbund Stuttgart e.V. 	Link 	20015 	01.01.2010 	01.01.2010 		12
+2058 	2370	C0501 	SC Affalterbach 	Link 	12386 		15.01.1988 		47
+2059 	2369	C0502 	SV Backnang 	Link 	15250 		15.01.1988 		74
+2060 	2364	C0507 	SV Fellbach 	Link 	15244 		15.01.1988 		30
+2061 	2361	C0510 	SK Korb 1948 	Link 	15253 		15.01.1988 		6
+2062 	2357	C0514 	SC Murrhardt 1948 e.V. 	Link 	15245 		15.01.1988 		49
+2063 	2356	C0515 	SF Oeffingen e.V. 	Link 	15247 		15.01.1988 		50
+2064 	2354	C0517 	SK Schmiden/Cannstatt 	Link 	15293 		15.01.1988 		39
+2065 	2353	C0518 	SV Schwaikheim 	Link 	15252 		15.01.1988 		75
+2066 	2341	C0530 	Mönchfelder SV 1967 	Link 	20263 		15.01.1988 		31
+2067 	2331	C0540 	SC Waiblingen 1921 	Link 	15234 		03.08.1997 		71
+2068 	2327	C0544 	SC Winnenden e.V. 	Link 	15238 		15.01.1988 		35
+2069 	2320	C0551 	SpVgg Rommelshausen 	Link 	15093 		15.01.1988 		70
+2070 	2316	C0555 	SF Hohenacker e.V. 		15397 	14.12.2009 	15.01.1988 		11
+2071 	2308	C0565 	Schach-Pinguine Sulzbach 	Link 	15383 	16.06.2007 	23.06.2007 		25
+2074 	2367	C0504 	Spvgg Böblingen 	Link 	3006 		03.01.1998 		48
+2075 	2366	C0505 	SC Böblingen 1975 e.V. 	Link 	3195 		15.01.1988 		67
+2076 	2362	C0509 	SV Herrenberg e.V. 	Link 	3217 		15.01.1988 		54
+2077 	4417	C050A 	Schach-Kids Bernhausen e.V. 	Link 	6471 	08.05.2012 	01.07.2014 		48
+2078 	2359	C0512 	SC Leinfelden 	Link 	6297 		15.01.1988 		33
+2079 	2358	C0513 	SV Leonberg 1978 eV 	Link 	3215 		15.01.1988 		44
+2080 	2352	C0519 	VfL Sindelfingen 	Link 	3111 		15.01.1988 		48
+2081 	2351	C0520 	SC Stetten a.d.F. 	Link 	6292 		15.01.1988 		35
+2082 	2349	C0522 	TSV Schönaich 	Link 	3102 		03.10.2003 		58
+2083 	2346	C0525 	SC Aidlingen 	Link 	3222 		15.01.1988 		13
+2084 	2340	C0531 	SV Weil der Stadt 	Link 	3224 		15.01.1988 		24
+2085 	2337	C0534 	SV Nagold 	Link 	5185 		15.01.1988 		27
+2086 	2335	C0536 	SGem Vaihingen-Rohr 	Link 	20262 		15.01.1988 		75
+2087 	2326	C0545 	Spvgg Renningen 	Link 	3092 		15.01.1988 		21
+2088 	2324	C0547 	SC Magstadt 	Link 	3226 		15.01.1988 		47
+2089 	2315	C0558 	TSV Heimsheim e.V. 	Link 	3149 		15.01.1988 		14
+2090 	2314	C0559 	Vardar Sindelfingen 		3181 		06.09.1997 		13
+2091 	2309	C0564 	TSV Simmozheim 	Link 	5094 		18.02.2005 		33
+2092 	4211	C0567 	SSV Turm Holzgerlingen 	Link 	3321 	13.06.2009 	13.06.2009 		23
+2093 	175	C0600 	Bezirk Unterland-Hohenlohe 	Link 			02.08.1997
+2101 	2307	C0601 	SV Bad Friedrichshall 	Link 	10241 		15.01.1988 		12
+2102 	2306	C0602 	SV Bad Rappenau 	Link 	10244 		15.01.1988 		25
+2103 	2305	C0603 	SC Blauer Turm Bad Wimpfen 	Link 	10252 		13.08.1997 		53
+2104 	2303	C0605 	VfL Eberstadt 		10030 		15.01.1988 		22
+2105 	2302	C0606 	TG Forchtenberg 	Link 	11009 		15.01.1988 		23
+2106 	4581	C060A 	Schachabteilung Post-SG Schwäbisch Hall 			17.05.2018 	17.05.2018 		16
+2107 	2298	C0610 	TSG Heilbronn 1845 e.V. 	Link 	10089 		15.01.1990 		31
+2108 	2297	C0611 	Heilbronner SV 	Link 	10236 		15.01.1988 		140
+2109 	2295	C0613 	SV 23 Böckingen 	Link 	10084 		15.01.1988 		42
+2110 	2291	C0617 	SC Künzelsau 	Link 	11076 		15.01.1988 		40
+2111 	2290	C0618 	SK Lauffen 	Link 	10248 		15.01.1988 		47
+2112 	2289	C0619 	SV Leingarten 		10110 		15.01.1988 		10
+2113 	2285	C0623 	SG Meimsheim-Güglingen 	Link 	10116 		15.01.1988 		20
+2114 	2281	C0627 	TSG Öhringen 	Link 	11037 		15.01.1988 		70
+2115 	2279	C0629 	SK Schwäbisch Hall 	Link 	18153 		15.01.1988 		73
+2116 	2276	C0632 	TSV Untergruppenbach 		10162 		15.01.1988 		11
+2117 	2273	C0635 	SC Widdern 	Link 	10243 		15.01.1988 		20
+2118 	2272	C0636 	TSV Willsbach 	Link 	10168 		15.01.1988 		68
+2119 	2269	C0639 	SC Neckarsulm e.V. 	Link 	10335 		15.01.1988 		62
+2120 	2266	C0642 	SV Gaildorf/Fichtenberg 		18155 		15.01.1988 		27
+2121 	2259	C0649 	TSV Gerabronn 	Link 	18040 		15.01.1988 		14
+2122 	2258	C0650 	SV Rochade Neuenstadt 	Link 	10272 		15.01.1988 		11
+2123 	2256	C0652 	SF HN-Biberach 1978 e.V. 	Link 	10242 		15.01.1988 		78
+2124 	2250	C0658 	TSV Schwaigern 	Link 	10153 		06.09.1997 		24
+2125 	2247	C0661 	Lachender Turm Schwäbisch Hall 	Link 	18189 		04.04.2001 		12
+2126 	4243	C0664 	SF Schwaigern 	Link 	10368 	13.03.2010 	13.03.2010 		74
+2127 	4267	C0665 	udk SV Ivanchuk Hn Vu Ter 		10373 	23.07.2010 	23.07.2010 		17
+2130 	2304	C0604 	SV Besigheim 	Link 	12393 		15.01.1988 		84
+2131 	2301	C0607 	SV Gemmrigheim 		12379 		15.01.1988 		42
+2132 	2300	C0608 	SK Sachsenheim 	Link 	12397 		15.01.1988 		53
+2133 	2284	C0624 	SF Möglingen 1976 	Link 	12394 		15.01.1988 		43
+2134 	2283	C0625 	TSV Münchingen 	Link 	12157 		15.01.1988 		40
+2135 	2282	C0626 	SG Ludwigsburg 1919 	Link 	12378 		15.07.1991 		64
+2136 	2278	C0630 	TSG Steinheim 	Link 	12193 		06.01.1998 		23
+2137 	2277	C0631 	SC Tamm 74 	Link 	12264 		15.01.1988 		76
+2138 	2275	C0633 	SVG Vaihingen/Enz 	Link 	12381 		20.08.1997 		32
+2139 	2271	C0637 	SC Erdmannhausen 	Link 	12395 		15.01.1988 		49
+2140 	2270	C0638 	SV Markgröningen 	Link 	12407 		15.01.1988 		27
+2141 	2268	C0640 	SV Marbach 	Link 	12342 		15.01.1988 		42
+2142 	2263	C0645 	SF 59 Kornwestheim 	Link 	12377 		15.01.1988 		95
+2143 	2261	C0647 	SC Asperg 	Link 	12390 		15.01.1988 		40
+2144 	2260	C0648 	SK Bietigheim-Bissingen 	Link 	12376 		15.01.1988 		42
+2145 	2254	C0654 	SC Ingersheim e.V. 	Link 	12416 		15.01.1988 		59
+2146 	2252	C0656 	SF Freiberg 	Link 	12392 		06.01.1998 		43
+2147 	2251	C0657 	SV Oberstenfeld 	Link 	12380 		15.01.1988 		22
+2148 	2249	C0659 	SV Mundelsheim 	Link 	12427 		15.12.1991 		15

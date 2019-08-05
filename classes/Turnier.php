@@ -73,7 +73,7 @@ class Turnier extends \Module
 
 		$code = \Input::get('code'); // Turniercode angefordert?
 		$search = \Input::get('search'); // Turniersuche aktiv?
-		$turniercode = \Input::get('code'); // Turniercode
+		$turniercode = str_replace(' ','+',\Input::get('code')); // Turniercode, Leerzeichen durch + ersetzen, da der Browser aus + Leerzeichen macht
 		$id = \Input::get('id'); // Spieler-ID
 		$view = \Input::get('view'); // View
 		

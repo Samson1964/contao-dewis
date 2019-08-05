@@ -1,6 +1,10 @@
 # Abfrage der DeWIS-API
 
+## Version 1.3.0 (2019-08-05)
+
 Fix: Link zur alten Datenbank korrigiert
+Add: Ausgabe der Vereinslosen in einer separaten Datei
+Fix: DeWIS liefert keine Vereine vom LVC (Württemberg), deshalb werden die Vereine erst einmal manuell eingefügt
 
 ## Version 1.2.4 (2017-12-18)
 

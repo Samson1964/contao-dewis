@@ -15,17 +15,17 @@
 //define(CACHE_TIME, 36000); // Cachezeit (36000 = 10h)
 //define(CACHE_TIME_FAKTOR_VERBAND, 20); // CACHE_TIME * Faktor = gesamte Cachelebenszeit
 //define(CACHE_TIME_FAKTOR_REFERENT, 5); // CACHE_TIME * Faktor = gesamte Cachelebenszeit
-define(CACHE_DIR, TL_ROOT . '/system/cache/dewis/'); // Cacheverzeichnis festlegen
+define('CACHE_DIR', TL_ROOT . '/system/cache/dewis/'); // Cacheverzeichnis festlegen
 
-define(KARTEISPERRE_GAESTE, true); // Anzeige von Karteikarten für nichtangemeldete Besucher gesperrt
-define(PASSIVE_AUSBLENDEN, false); // Anzeige passiver Spieler
-define(GEBURTSJAHR_AUSBLENDEN, true); // Anzeige des Geburtsjahres
-define(GESCHLECHT_AUSBLENDEN, true); // Anzeige des Geschlechtes
+define('KARTEISPERRE_GAESTE', true); // Anzeige von Karteikarten für nichtangemeldete Besucher gesperrt
+define('PASSIVE_AUSBLENDEN', false); // Anzeige passiver Spieler
+define('GEBURTSJAHR_AUSBLENDEN', true); // Anzeige des Geburtsjahres
+define('GESCHLECHT_AUSBLENDEN', true); // Anzeige des Geschlechtes
 
-define(ALIAS_SPIELER, 'spieler'); // Spielerseite
-define(ALIAS_VEREIN, 'verein'); // Vereineseite
-define(ALIAS_VERBAND, 'verband'); // Verbändeseite
-define(ALIAS_TURNIER, 'turnier'); // Turniereseite
+define('ALIAS_SPIELER', 'spieler'); // Spielerseite
+define('ALIAS_VEREIN', 'verein'); // Vereineseite
+define('ALIAS_VERBAND', 'verband'); // Verbändeseite
+define('ALIAS_TURNIER', 'turnier'); // Turniereseite
 
 /**
  * Backend-Module
